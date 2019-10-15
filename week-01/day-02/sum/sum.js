@@ -3,7 +3,7 @@
 // - Write a function called `sum` that sum all the numbers until the given parameter
 // - The function should return the result
 function sum(...numbers) {
-    return numbers.reduce((num, accu) => accu += num)
+    return numbers.reduce((accu, current) => current += accu)
 }
 
 console.log(sum(1,2,3,4))
