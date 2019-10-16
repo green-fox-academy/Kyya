@@ -1,0 +1,13 @@
+{
+  "cases": [
+    {
+      "ex_input" : [],
+      "ex_output" : [
+        "^My todo:",
+        "^ - Buy milk",
+        "^ - Download games",
+        "^   - Diablo"
+      ]
+    }
+  ]
+}

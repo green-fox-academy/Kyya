@@ -1,0 +1,10 @@
+{
+  "cases": [
+    {
+      "ex_input" : [],
+      "ex_output" : [
+        "^https://www.reddit.com/r/nevertellmetheodds"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "cases": [
+    {
+      "ex_input" : [],
+      "ex_output" : [
+        "^In a galaxy far far away"
+      ]
+    }
+  ]
+}
