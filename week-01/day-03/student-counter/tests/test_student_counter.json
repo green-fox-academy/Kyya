@@ -1,0 +1,11 @@
+{
+  "cases": [
+    {
+      "ex_input" : [],
+      "ex_output" : [
+        "Zsombor|Olaf",
+        "^29.5"
+      ]
+    }
+  ]
+}
