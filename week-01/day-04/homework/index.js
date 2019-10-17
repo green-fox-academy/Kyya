@@ -6,4 +6,16 @@ const trees = [
     { type :"pine", leftColor :"green", age: "60", sex: "male"}
 ]
 
-console.log(trees)
+class Tree {
+    constructor(type, leftColor, age, sex) {
+        this.type = type
+        this.leftColor = leftColor
+        this.age = age
+        this.sex = sex
+    }
+}
+
+const list = trees.map(tree=>{
+    return new Tree(tree.type, tree.leftColor, tree.age, tree.sex)
+})
+console.log(list)
