@@ -1,27 +1,25 @@
+const Plant = require('./plant')
+
 class Garden {
     constructor() {
-        this.flowers = []
-        this.trees = []
+        this.plants = []
     }
     get needers() {
-        return this.trees.filter(i=>i.needs).length + this.flowers.filter(i=>i.needs).length
+        return this.plants.filter(i=>i.needs).length
     }
     water(amount) {
         console.log(`Watering with ${amount}`)
         const waterDivided = amount / this.needers
-        this.flowers.forEach(flower=>flower.watered(waterDivided))
-        this.trees.forEach(tree=>tree.watered(waterDivided))
+        this.plants.forEach(i=>i.watered(waterDivided))
         console.log()
     }
-    addTree(tree) {
-        this.trees.push(tree)
-    }
-    addFlower(flower) {
-        this.flowers.push(flower)
+    addPlant(plant) {
+        if (plant instanceof Plant) {
+            this.plants.push(plant)
+        }
     }
     state() {
-        this.flowers.forEach(i=>i.state())
-        this.trees.forEach(i=>i.state())
+        this.plants.forEach(i=>i.state())
         console.log()
     }
 }

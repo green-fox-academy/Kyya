@@ -3,11 +3,12 @@ const Tree = require('./tree')
 const Garden = require('./garden')
 
 const garden = new Garden()
-garden.addTree(new Tree('purple'))
-garden.addTree(new Tree('orange'))
 
-garden.addFlower(new Flower('yellow'))
-garden.addFlower(new Flower('blue'))
+garden.addPlant(new Flower('yellow'))
+garden.addPlant(new Flower('blue'))
+
+garden.addPlant(new Tree('purple'))
+garden.addPlant(new Tree('orange'))
 
 garden.state()
 garden.water(40)
