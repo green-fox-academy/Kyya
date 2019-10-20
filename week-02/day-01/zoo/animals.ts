@@ -53,6 +53,7 @@ class Reptile extends Animal {
 }
 
 export {
+    Animal,
     Reptile,
     Bird,
     Mammal
