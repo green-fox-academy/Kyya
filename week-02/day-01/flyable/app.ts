@@ -1,12 +1,12 @@
-import { Helicopter, Bird } from './flyable'
+import { Helicopter, Bird } from './flyable';
 
-const h = new Helicopter()
-const b = new Bird('Hummer')
+const helicopter = new Helicopter();
+const bird = new Bird('Hummer');// a tiny bird fly very fast
 
-h.takeOff()
-h.fly()
-h.land()
+helicopter.takeOff();
+helicopter.fly();
+helicopter.land();
 
-b.takeOff()
-b.fly()
-b.land()
+bird.takeOff();
+bird.fly();
+bird.land();

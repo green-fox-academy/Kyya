@@ -20,13 +20,15 @@ class Helicopter extends Vehicle implements IFlyable {
     constructor() {
         super(0, 300);
     }
+
     land() {
         console.log('The Helicopter is landing.');
     }
+
     fly() {
         console.log('The Helicopter is Flying.');
-
     }
+    
     takeOff() {
         console.log('The Helicopter is Taking off.');
     }
@@ -39,15 +41,19 @@ class Bird extends Animal implements IFlyable {
     constructor(name: string) {
         super(name);
     }
+
     breed() {
         return 'laying eggs';
     }
+
     land() {
         console.log(`The ${this.name} is Landing.`);
     }
+
     fly() {
         console.log(`The ${this.name} is Flying.`);
     }
+
     takeOff() {
         console.log(`The ${this.name} is Taking off.`);
     }

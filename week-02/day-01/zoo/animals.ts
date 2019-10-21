@@ -4,6 +4,7 @@ abstract class Animal {
 
     protected gender: string;
     protected hunger: number;
+
     run() {
         console.log(`${this.name} is running.`);
     }
@@ -13,6 +14,7 @@ abstract class Animal {
     constructor(name: string) {
         this.name = name;
     }
+
     getName() {
         return this.name;
     }
@@ -25,6 +27,7 @@ class Mammal extends Animal {
     constructor(name: string) {
         super(name);
     }
+
     breed() {
         return 'pushing miniature versions out';
     }
@@ -36,6 +39,7 @@ class Bird extends Animal {
     constructor(name: string) {
         super(name);
     }
+
     breed() {
         return 'laying eggs';
     }
@@ -47,6 +51,7 @@ class Reptile extends Animal {
     constructor(name: string) {
         super(name);
     }
+    
     breed() {
         return 'laying eggs';
     }

@@ -15,11 +15,13 @@ interface IReservationy {
 
 class Reservation implements IReservationy {
     getDowBooking(): string {
-        return DOW[Math.floor(Math.random() * 7)]
+        return DOW[Math.floor(Math.random() * 7)];
     }
+
     getCodeBooking(): string {
-        return [...Array(8)].map(()=>CODE[Math.floor(Math.random() * 36)]).join('')
+        return [...Array(8)].map(()=>CODE[Math.floor(Math.random() * 36)]).join('');
     }
+
     toString(): string {
         return `Booking #${this.getCodeBooking()} for ${this.getDowBooking()}`;
     }
