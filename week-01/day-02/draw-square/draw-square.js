@@ -1,4 +1,3 @@
-'use strict';
 
 const lineCount = 6;
 
@@ -14,9 +13,10 @@ const lineCount = 6;
 // %%%%%%
 //
 // The square should have as many lines as lineCount is
-for (let i=1; i<=6; i++) {
-    if (i==1 || i==lineCount)
-        console.log('%'.repeat(lineCount))
-    else 
-        console.log('%'+' '.repeat(lineCount-2)+'%')
+for (let i = 1; i <= 6; i++) {
+  if (i === 1 || i === lineCount) {
+    console.log('%'.repeat(lineCount));
+  } else {
+    console.log(`%${' '.repeat(lineCount - 2)}%`);
+  }
 }

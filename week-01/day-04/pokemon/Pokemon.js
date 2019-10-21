@@ -1,5 +1,4 @@
 class Pokemon {
-
   constructor(name, type, effectiveAgainst) {
     this.name = name;
     this.type = type;

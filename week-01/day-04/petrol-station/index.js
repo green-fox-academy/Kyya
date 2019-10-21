@@ -1,24 +1,9 @@
-class Station {
-    constructor(gasAmount = 1000) {
-        this.gasAmount = gasAmount
-    }
+const Station = require('./Station');
+const Car = require('./Car');
 
-    refill(car) {
-        this.gasAmount -= car.capacity
-        car.gasAmount = car.capacity
-    }
-}
+const station = new Station();
+const car = new Car();
 
-class Car {
-    constructor() {
-        this.gasAmount = 0
-        this.capacity = 100
-    }
-}
-
-const station = new Station()
-const car = new Car()
-
-station.refill(car)
-console.log(car)
-console.log(station)
+station.refill(car);
+console.log(car);
+console.log(station);

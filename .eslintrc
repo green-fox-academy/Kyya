@@ -1,0 +1,17 @@
+{
+    "extends": [
+        "airbnb-base"
+    ],
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "eqeqeq": "warn",
+        "no-console": "off",
+        "class-methods-use-this": "off",
+        "no-plusplus": "off",
+        "no-restricted-syntax": "off",
+        "no-param-reassign": "off"
+    }
+}

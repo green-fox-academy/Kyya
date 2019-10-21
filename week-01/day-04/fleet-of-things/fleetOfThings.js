@@ -1,35 +1,32 @@
-'use strict';
 
 const Thing = require('./thing');
 const Fleet = require('./fleet');
 
 class FleetOfThings {
+  constructor() {
+    this.main();
+  }
 
-    constructor() {
-        this.main()
-    }
-    main() {
-        this.fleet = new Fleet();
-        this.fleet.add(new Thing("Get milk"))
-        this.fleet.add(new Thing("Remove the obstacles"))
-        const t1 = new Thing("Stand up")
+  main() {
+    this.fleet = new Fleet();
+    this.fleet.add(new Thing('Get milk'));
+    this.fleet.add(new Thing('Remove the obstacles'));
+    const t1 = new Thing('Stand up');
 
-        t1.complete()
-        const t2 = new Thing("Eat lunch")
-        t2.complete()
+    t1.complete();
+    const t2 = new Thing('Eat lunch');
+    t2.complete();
 
-        this.fleet.add(t1)
-        this.fleet.add(t2)
-    }
+    this.fleet.add(t1);
+    this.fleet.add(t2);
+  }
 
-    print() {
-        const things = this.fleet.getThings().map(
-            (thing, index) => {
-                return `${index+1}. [${thing.getCompleted()?'x':' '}] ${thing.getName()}`
-            }
-        )
-        console.log(things.join('\n'))
-    }
+  print() {
+    const things = this.fleet.getThings().map(
+      (thing, index) => `${index + 1}. [${thing.getCompleted() ? 'x' : ' '}] ${thing.getName()}`,
+    );
+    console.log(things.join('\n'));
+  }
 }
 // -  You have the `Thing` class
 // -  You have the `Fleet` class
@@ -45,5 +42,5 @@ class FleetOfThings {
 // 4. [x] Eat lunch
 
 // Hint: You have to create a `print()` method as well
-const ft = new FleetOfThings()
-ft.print()
+const ft = new FleetOfThings();
+ft.print();

@@ -1,8 +1,8 @@
-const Person = require('./Person')
-const Student = require('./Student')
-const Mentor = require('./Mentor')
-const Sponsor = require('./Sponsor')
-const Cohort = require('./Cohort')
+const Person = require('./Person');
+const Student = require('./Student');
+const Mentor = require('./Mentor');
+const Sponsor = require('./Sponsor');
+const Cohort = require('./Cohort');
 
 const people = [];
 
@@ -43,7 +43,7 @@ for (let i = 0; i < 4; i++) {
 people.forEach((person) => {
   person.introduce();
   person.getGoal();
-})
+});
 
 const awesome = new Cohort('AWESOME');
 awesome.addStudent(student);

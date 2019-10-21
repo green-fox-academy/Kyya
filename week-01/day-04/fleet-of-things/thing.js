@@ -1,5 +1,4 @@
 class Thing {
-
   constructor(name) {
     this.name = name;
     this.completed = false;

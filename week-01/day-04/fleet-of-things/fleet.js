@@ -1,5 +1,4 @@
 class Fleet {
-
   constructor() {
     this.things = [];
   }

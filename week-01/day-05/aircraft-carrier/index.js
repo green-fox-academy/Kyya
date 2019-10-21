@@ -1,4 +1,3 @@
-'use strict';
 
 const Carrier = require('./Carrier');
 const F16 = require('./F16');

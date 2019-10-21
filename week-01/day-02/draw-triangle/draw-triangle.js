@@ -1,4 +1,3 @@
-'use strict';
 
 const lineCount = 4;
 
@@ -11,6 +10,6 @@ const lineCount = 4;
 // ****
 //
 // The triangle should have as many lines as lineCount is
-for (let i=1; i<=lineCount; i++) {
-    console.log('*'.repeat(i))
+for (let i = 1; i <= lineCount; i++) {
+  console.log('*'.repeat(i));
 }

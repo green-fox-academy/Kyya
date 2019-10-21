@@ -6,11 +6,12 @@
 //  % % % %
 // % % % %
 //  % % % %
-// % % % % 
+// % % % %
 //  % % % %
 //
-const lineCout = 8;
+const lineCount = 8;
 const columnCount = 8;
 
-for (let i=0; i<=lineCout; i++) 
-    console.log(`${i%2==0?' ':''}${'% '.repeat(columnCount)}`)
+for (let i = 0; i <= lineCount; i++) {
+  console.log(`${i % 2 === 0 ? ' ' : ''}${'% '.repeat(columnCount)}`);
+}

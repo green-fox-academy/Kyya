@@ -1,4 +1,4 @@
-'use strict';
+
 // Create a simple calculator application which does read the parameters from the standard input
 // and prints the result to the console.
 
@@ -17,12 +17,13 @@
 // Else print the result
 // Say goodbye
 function calculator() {
-    const args = process.argv.splice(2); // Just a helper for you to get started
-    console.log('Input params are', args);
-    const [ operation, operand1, operand2 ] = args
-    return eval(`${operand1} ${operation} ${operand2}`)
+  const args = process.argv.splice(2); // Just a helper for you to get started
+  console.log('Input params are', args);
+  const [operation, operand1, operand2] = args;
+  /* eslint-disable-next-line */
+  return eval(`${operand1} ${operation} ${operand2}`);
 }
 
-console.log(calculator())
+console.log(calculator());
 
 module.exports = calculator;

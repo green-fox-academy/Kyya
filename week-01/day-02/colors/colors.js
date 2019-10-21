@@ -1,4 +1,3 @@
-'use strict';
 
 // - Create a two dimensional list
 //   which can contain the different shades of specified colors
@@ -9,12 +8,12 @@
 // - In `colors[2]` store the shades of pink:
 //   `'orchid', 'violet', 'pink', 'hot pink'`
 
-const colors = []
+const colors = [];
 
-colors[0] = ['lime', 'forest green', 'olive', 'pale green', 'spring green']
-colors[1] = ['orange red', 'red', 'tomato']
-colors[2] = ['orchid', 'violet', 'pink', 'hot pink']
+colors[0] = ['lime', 'forest green', 'olive', 'pale green', 'spring green'];
+colors[1] = ['orange red', 'red', 'tomato'];
+colors[2] = ['orchid', 'violet', 'pink', 'hot pink'];
 
-console.log(colors[0])
-console.log(colors[1])
-console.log(colors[2])
+console.log(colors[0]);
+console.log(colors[1]);
+console.log(colors[2]);
