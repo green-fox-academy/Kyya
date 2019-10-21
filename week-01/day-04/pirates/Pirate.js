@@ -1,31 +1,49 @@
+'use strict';
+
 class Pirate {
-    constructor(type = 'crew') {
-        // this.health = 100
-        this.alive = true
-        this.type = type
-        this.rumCounter = 0
+    constructor() {
+        // this.health = 100;
+        this.isAlive = true;
+        this.isPassedOut = false;
+        this.numberOfRums = 0;
     }
+
+    isCaptain() {
+        return false;
+    }
+
     drinkSomeRum() {
-        this.rumCounter++
-        this.howsItGoingMate()
+        this.numberOfRums++;
+        // return this.numberOfRums;
+        // this.howsItGoingMate();
     }
+
     howsItGoingMate() {
-        if (this.rumCounter >= 0 && this.rumCounter <= 4) {
-            console.log("Pour me anudder!")
+        if (this.numberOfRums >= 0 && this.numberOfRums <= 4) {
+            console.log("Pour me anudder!");
         } else {
-            console.log("Arghh, I'ma Pirate. How d'ya d'ink its goin?")
+            console.log("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
             // passed out
-            this.die()
+            this.isPassedOut = true;
         }
     }
+
     die() {
-        this.alive = false
+        this.isAlive = false;
     }
+
     brawl(anotherPirate) {
-        // this alive
-        // another alive
-        // both dead
+        const pointsOfRoll = Math.floor(Math.random() * 100); // // [0-100]
+
+        if (pointsOfRoll >= 0 && pointsOfRoll < 100 / 3) {
+            this.die();
+        } else if (pointsOfRoll >= 100 / 3 && pointsOfRoll <= 200 / 3) {
+            anotherPirate.die();
+        } else if (pointsOfRoll > 200 / 3 && pointsOfRoll <= 100) {
+            this.die();
+            anotherPirate.die();
+        }
     }
 }
 
-module.exports = Pirate
+module.exports = Pirate;

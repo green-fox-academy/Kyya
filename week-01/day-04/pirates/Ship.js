@@ -1,46 +1,63 @@
-const Pirate = require('./Pirate')
+'use strict';
+
+const Pirate = require('./Pirate');
+const Captain = require('./Captain');
 
 class Ship {
-    constructor() {
-        this.pList = []
-        this.rums = 100
+    constructor(rums=0) {
+        this.listOfPirates = [];
+        this.rums = rums;
     }
+
     fillShip() {
-        this.captain = new Pirate('captain')
-        const pirates = Math.ceil(Math.random() * 10)
-        for(let i=0; i<pirates; i++)
-            this.pList.push(new Pirate)
-    }
-    get score() {
-        return this.pList.filter(i=>i.alive).length - this.captain.rumCounter
+        this.captain = new Captain();
+        this.listOfPirates.push(this.captain);
+
+        const numberOfPirates = Math.ceil(Math.random() * 10);
+        for(let i = 0; i < numberOfPirates; i++)
+            this.listOfPirates.push(new Pirate());
     }
 
-    battle(otherShip) {
-        console.log('\nBattle starting...')
-        const isWin = this.score > otherShip.score
-
-        if (isWin) {
-            this.rums += Math.ceil(Math.random() * 30)
+    getScore() {
+        return (this.getAlivePirates() - this.captain.numberOfRums);
+    }
+    haveParty() {
+        this.rums += Math.ceil(Math.random() * 30);
+        if (this.rums > this.getAlivePirates()) {
+            this.listOfPirates.forEach(i=>i.drinkSomeRum());
         } else {
-            this.pList.forEach(
+            console.log('There is not enough rums.');
+        }
+        
+    }
+    battle(otherShip) {
+        console.log('\nBattle starting...');
+        const isWinner = this.getScore() > otherShip.getScore();
+
+        if (isWinner) {
+            this.haveParty();
+        } else {
+            otherShip.listOfPirates.forEach(
                 i => {
                     if (Math.ceil(Math.random() * 100) > 30) {
-                        i.die()
+                        i.die();
                     }
                 }
-            )
+            );
         }
-       return isWin
+       return isWinner;
     }
-    get alivePirates() {
-        return this.pList.filter(i=>i.alive).length
+
+    getAlivePirates() {
+        return this.listOfPirates.filter(i=>i.isAlive).length;
     }
+
     greatPrint() {
-        console.log('----- INFO ------')
-        console.log(`Captain:\n    consumed rum: ${this.captain.rumCounter}\n    status: ${this.captain.alive?'alive':'dead'}`)
-        console.log(`Pirates:\n    alive:${this.alivePirates}`)
-        console.log('------ END ------\n')
+        console.log('----- INFO ---------');
+        console.log(`| Captain:\n|    consumed rum: ${this.captain.numberOfRums}\n|    status: ${this.captain.isAlive?'alive':'dead'}`);
+        console.log(`| Pirates:\n|    alive:${this.getAlivePirates()}`);
+        console.log('------ END ---------\n');
     }
 }
 
-module.exports = Ship
+module.exports = Ship;
