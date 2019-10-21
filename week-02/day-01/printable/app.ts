@@ -1,21 +1,22 @@
-import { Domino, Todo } from './printable';
+import Domino from './Domino';
+import Todo from './Todo';
 
-const dominoes = [
-    new Domino(1, 2),
-    new Domino(2, 4),
-    new Domino(4, 7)
+const listOfDominoes = [
+  new Domino(1, 2),
+  new Domino(2, 4),
+  new Domino(4, 7),
 ];
 
-const todos = [
-    new Todo('Stand up'),
-    new Todo('Eat lunch'),
-    new Todo('Get milk', true)
+const listOfTodos = [
+  new Todo('Stand up'),
+  new Todo('Eat lunch'),
+  new Todo('Get milk', true),
 ];
 
-for (let domino of dominoes) {
-    domino.printAllFields();
+for (const domino of listOfDominoes) {
+  domino.printAllFields();
 }
 
-for (let todo of todos) {
-    todo.printAllFields();
+for (const todo of listOfTodos) {
+  todo.printAllFields();
 }

@@ -1,4 +1,5 @@
-import { Helicopter, Bird } from './flyable';
+import Helicopter from './Helicopter';
+import Bird from './Bird';
 
 const helicopter = new Helicopter();
 const bird = new Bird('Hummer');// a tiny bird fly very fast

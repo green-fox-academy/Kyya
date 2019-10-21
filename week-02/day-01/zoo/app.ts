@@ -1,4 +1,6 @@
-import { Reptile, Mammal, Bird } from './animals'
+import Reptile from './Reptile';
+import Mammal from './Mammal';
+import Bird from './Bird';
 
 const reptile = new Reptile('Crocodile');
 const mammal = new Mammal('Koala');
