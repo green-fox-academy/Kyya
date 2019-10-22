@@ -15,7 +15,8 @@
         "class-methods-use-this": "off",
         "no-plusplus": "off",
         "no-restricted-syntax": "off",
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "func-names": "off"
     },
     "settings": {
         "import/resolver": {
