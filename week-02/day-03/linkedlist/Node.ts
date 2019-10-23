@@ -1,9 +1,11 @@
-export default class Node {
-  public data: string;
+import { INode } from '../interfaces';
 
-  public next: Node;
+export default class Node<T> implements INode<T> {
+  public data: T;
 
-  constructor(data: string, next: Node = null) {
+  public next: Node<T>;
+
+  constructor(data: T, next: Node<T> = null) {
     this.data = data;
     this.next = next;
   }

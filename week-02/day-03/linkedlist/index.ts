@@ -1,6 +1,6 @@
 import LinkedList from './LinkedList';
 
-const list = new LinkedList();
+const list = new LinkedList<string>();
 
 list.add('apple');
 list.add('orange');

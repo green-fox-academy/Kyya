@@ -1,13 +1,13 @@
-import { Stack } from './stack.interface';
+import { IStack } from '../interfaces';
 
-export default class KStack implements Stack {
-  protected elements: string[] = [];
+export default class Stack<T> implements IStack<T> {
+  protected elements: T[] = [];
 
-  push(value: string): void {
+  push(value: T): void {
     this.elements.unshift(value);
   }
 
-  pop(): string {
+  pop(): T {
     return this.elements.shift();
   }
 
@@ -15,7 +15,7 @@ export default class KStack implements Stack {
     return this.elements.length === 0;
   }
 
-  peek(): string {
+  peek(): T {
     return this.elements[0];
   }
 

@@ -8,7 +8,7 @@ tree.add('C');
 tree.add('B');
 tree.add('A');
 
-console.log('\n▶ Print Generic tree.');
+console.log('\n\x1b[1m▶ Print Generic tree.\x1b[0m');
 console.log(tree.toString());
 
 console.log('\n▶ Print Pre Order tree.');

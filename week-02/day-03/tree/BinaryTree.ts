@@ -1,8 +1,8 @@
-import { Tree } from './tree.interface';
+import { ITree } from '../interfaces';
 import BinaryNode from './BinaryNode';
-import GenericQueue from './queue';
+import Queue from '../queue/Queue';
 
-export default class BinaryTree<T> implements Tree<T> {
+export default class BinaryTree<T> implements ITree<T> {
   protected root = null;
 
   empty(): boolean {
@@ -15,7 +15,7 @@ export default class BinaryTree<T> implements Tree<T> {
 
   remove(value: T): void {
     function deleteDeepest(root: BinaryNode<T>, dNode: BinaryNode<T>): void {
-      const q = new GenericQueue<BinaryNode<T>>();
+      const q = new Queue<BinaryNode<T>>();
       q.add(root);
 
       // Do level order traversal until last node
@@ -55,7 +55,7 @@ export default class BinaryTree<T> implements Tree<T> {
         }
         return root;
       }
-      const q = new GenericQueue<BinaryNode<T>>();
+      const q = new Queue<BinaryNode<T>>();
       q.add(root);
       let temp: BinaryNode<T>;
       let keyNode: BinaryNode<T> = null;

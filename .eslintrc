@@ -16,7 +16,8 @@
         "no-plusplus": "off",
         "no-restricted-syntax": "off",
         "no-param-reassign": "off",
-        "func-names": "off"
+        "func-names": "off",
+        "@typescript-eslint/interface-name-prefix": "off"
     },
     "settings": {
         "import/resolver": {

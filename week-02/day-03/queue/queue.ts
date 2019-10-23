@@ -1,21 +1,21 @@
-import { Queue } from './queue.interface';
+import { IQueue } from '../interfaces';
 
-export default class KQueue implements Queue {
-  protected elements: string[] = [];
+export default class Queue<T> implements IQueue<T> {
+  protected elements: T[] = [];
 
   empty(): boolean {
     return this.elements.length === 0;
   }
 
-  peek(): string {
+  peek(): T {
     return this.elements[0];
   }
 
-  add(value: string): void {
+  add(value: T): void {
     this.elements.push(value);
   }
 
-  remove(): string {
+  remove(): T {
     return this.elements.shift();
   }
 

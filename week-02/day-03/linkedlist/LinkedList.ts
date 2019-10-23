@@ -1,17 +1,16 @@
-import { LinkedList } from './LinkedList.interface';
+import { ILinkedList } from '../interfaces';
 import Node from './Node';
 
-export default class KLinkedList implements LinkedList {
+export default class LinkedList<T> implements ILinkedList<T> {
+  protected head = new Node<T>(null);
 
-  protected head = new Node(null);
-
-  add(value: string, index?: number): void {
+  add(value: T, index?: number): void {
     if (index || index === 0) {
       let previous = this.head;
       for (let i = 0; previous.next && i < index; i++) {
         previous = previous.next;
       }
-      previous.next = new Node(value, previous.next);
+      previous.next = new Node<T>(value, previous.next);
     } else {
       let previous = this.head;
       while (previous.next) {
@@ -21,7 +20,7 @@ export default class KLinkedList implements LinkedList {
     }
   }
 
-  get(index: number): string {
+  get(index: number): T {
     index = Math.max(0, index);
     index = Math.min(this.size() - 1, index);
 
@@ -35,7 +34,7 @@ export default class KLinkedList implements LinkedList {
     return null;
   }
 
-  removeItem(value: string): void {
+  removeItem(value: T): void {
     let previous = this.head;
     while (previous.next && previous.next.data !== value) {
       previous = previous.next;
@@ -43,7 +42,7 @@ export default class KLinkedList implements LinkedList {
     previous.next = previous.next.next;
   }
 
-  remove(index: number): string {
+  remove(index: number): T {
     let previous = this.head;
     for (let i = 0; previous.next && i < index; i++) {
       previous = previous.next;

@@ -1,7 +1,7 @@
-import { Tree } from './tree.interface';
+import { ITree } from '../interfaces';
 import BinaryNode from './BinaryNode';
 
-export default class BinarySearchTree<T> implements Tree<T> {
+export default class BinarySearchTree<T> implements ITree<T> {
   protected root = null;
 
   empty(): boolean {

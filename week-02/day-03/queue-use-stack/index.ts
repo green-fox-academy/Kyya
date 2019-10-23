@@ -1,6 +1,6 @@
-import StaQueue from './queue';
+import StackQueue from './StackQueue';
 
-const queue = new StaQueue();
+const queue = new StackQueue();
 
 console.log('\n▶ Call `add` method then print on queue.');
 queue.add('apple');
