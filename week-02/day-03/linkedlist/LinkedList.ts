@@ -2,97 +2,66 @@ import { LinkedList } from './LinkedList.interface';
 import Node from './Node';
 
 export default class KLinkedList implements LinkedList {
-  protected head: Node;
 
-  constructor(head: Node = null) {
-    this.head = head;
-  }
-
-  getAt(index: number): Node {
-    let counter = 0;
-    let node = this.head;
-    while (node) {
-      if (counter === index) {
-        return node;
-      }
-      counter++;
-      node = node.next;
-    }
-    return null;
-  }
+  protected head = new Node(null);
 
   add(value: string, index?: number): void {
-    // if the list is empty i.e. head = null
-    if (!this.head) {
-      this.head = new Node(value);
-      return;
-    }
-    if (index === undefined) {
-      let node = this.head;
-      while (node.next) {
-        node = node.next;
+    if (index || index === 0) {
+      let previous = this.head;
+      for (let i = 0; previous.next && i < index; i++) {
+        previous = previous.next;
       }
-      node.next = new Node(value);
+      previous.next = new Node(value, previous.next);
     } else {
-      // if new node needs to be inserted at the front of the list i.e. before the head.
-      if (index === 0) {
-        this.head = new Node(value, this.head);
-        return;
+      let previous = this.head;
+      while (previous.next) {
+        previous = previous.next;
       }
-      // else, use getAt() to find the previous node.
-      const previous = this.getAt(index - 1);
-      const newNode = new Node(value);
-      const last = previous.next;
-      previous.next = newNode;
-      newNode.next = last;
+      previous.next = new Node(value);
     }
   }
 
   get(index: number): string {
-    let node = this.head;
-    while (index--) {
-      node = node.next;
-      if (!node) {
-        return null;
-      }
+    index = Math.max(0, index);
+    index = Math.min(this.size() - 1, index);
+
+    let current = this.head.next;
+    for (let i = 0; current && i < index; i++) {
+      current = current.next;
     }
-    return node.element;
+    if (current) {
+      return current.data;
+    }
+    return null;
   }
 
   removeItem(value: string): void {
-    let node = this.head;
-    let counter = 0;
-
-    while (node) {
-      if (node.element === value) {
-        this.remove(counter);
-      }
-      counter++;
-      node = node.next;
-    }
-  }
-
-  remove(index: number): string {
-    // node needs to be deleted from the front of the list i.e. before the head.
-    if (index === 0) {
-      this.head = this.head.next;
-      return;
-    }
-    // else, use getAt() to find the previous node.
-    const previous = this.getAt(index - 1);
-    if (!previous || !previous.next) {
-      return;
+    let previous = this.head;
+    while (previous.next && previous.next.data !== value) {
+      previous = previous.next;
     }
     previous.next = previous.next.next;
   }
 
+  remove(index: number): string {
+    let previous = this.head;
+    for (let i = 0; previous.next && i < index; i++) {
+      previous = previous.next;
+    }
+    if (index >= 0 && previous.next) {
+      const old = previous.next.data;
+      previous.next = previous.next.next;
+      return old;
+    }
+    return null;
+  }
+
   size(): number {
     let counter = 0;
-    let node = this.head;
-
-    while (node) {
+    let start = this.head;
+    while (start.next) {
       counter++;
-      node = node.next;
+      start = start.next;
     }
     return counter;
   }
@@ -101,8 +70,8 @@ export default class KLinkedList implements LinkedList {
     let node = this.head;
     let output = '';
     let index = 0;
-    while (node) {
-      output += `${index !== 0 ? '->' : ''}${node.element}`;
+    while (node.next) {
+      output += `${index !== 0 ? '->' : ''}${node.next.data}`;
       node = node.next;
       index++;
     }
