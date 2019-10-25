@@ -1,6 +1,7 @@
 import { Matrix } from './Matrix';
+import { ISudoku } from './Interfaces';
 
-class Sudoku extends Matrix<number> {
+class Sudoku extends Matrix<number> implements ISudoku {
   static MAX_COUNT = 1;
 
   protected counter = 0;

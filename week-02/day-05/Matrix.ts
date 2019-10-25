@@ -4,7 +4,7 @@ class Matrix<T> implements IMatrix<T> {
   rows: number;
   columns: number;
   values: T[][] = [];
-
+  // ...
   constructor(rows: number, columns: number, initialValue: T = null) {
     this.rows = rows;
     this.columns = columns;
