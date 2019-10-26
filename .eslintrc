@@ -11,6 +11,8 @@
     },
     "rules": {
         "eqeqeq": "warn",
+        "no-continue": "off",
+        "no-labels": "off",
         "no-console": "off",
         "class-methods-use-this": "off",
         "no-plusplus": "off",
@@ -18,6 +20,9 @@
         "no-param-reassign": "off",
         "func-names": "off",
         "no-bitwise": "off",
+        "arrow-parens": "off",
+        "lines-between-class-members": "off",
+        "import/prefer-default-export": "off",
         "@typescript-eslint/interface-name-prefix": "off"
     },
     "settings": {

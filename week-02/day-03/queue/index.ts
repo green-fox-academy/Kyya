@@ -1,6 +1,6 @@
-import KQueue from './queue';
+import Queue from './Queue';
 
-const queue = new KQueue();
+const queue = new Queue();
 
 console.log('\n▶ Call `add` method then print on queue.');
 queue.add('apple');
