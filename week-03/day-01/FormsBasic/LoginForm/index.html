@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Login Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-weight: normal;
+      text-decoration: none;
+      color: #000;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ebebeb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card {
+      border-radius: 5px;
+      margin-top: 63px;
+      padding: 48px 85px;
+      width: 562px;
+      height: 521px;
+      background-color: #fff;
+      box-shadow: 0 1px 3px 0 rgba(0,0,0,.2);
+    }
+    button,
+    .hint,
+    .card h1{
+      font-family: 'Century Gothic Negreta';
+    }
+    .card h1 {
+      color: #3b3c38;
+      font-size: 32px;
+    }
+    form label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    input[type="text"],
+    input[type="password"] {
+      outline: none;
+      border-radius: 5px;
+      border: 1px solid rgba(0,0,0,.2);
+      width: 100%;
+      padding-left: 12px;
+      font-size: 24px;
+      height: 50px;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border: 1px solid green;
+    }
+    .field {
+      margin-bottom: 24px;
+    }
+    .hint {
+      color: gray;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+    button {
+      cursor: pointer;
+      padding: 0 48px;
+      border: 0;
+      outline: none;
+      color: #fff;
+      font-size: 18px;
+      height: 52px;
+      background-color: #3b3c38;
+      border-radius: 26px;
+    }
+    button.submit {
+      margin-top: 64px;
+      border: 2px solid transparent;
+    }
+    button.submit:hover {
+      color: #3b3c38;
+      border: 2px solid #3b3c38;
+      background-color: #fff;
+    }
+    .password {
+      position: relative;
+    }
+    .password .eye {
+      cursor: pointer;
+      fill: gray;
+      display: block;
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 20px;
+      right: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>ACCOUNT LOGIN</h1>
+    <form>
+        <div class="field">
+            <label>USERNAME</label>
+            <input type="text" name="username">
+        </div>
+        <div class="field">
+          <label>PASSWORD</label>
+          <div class="password">
+            <input type="password" name="password">
+            <svg class="eye" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2023" width="200" height="200"><path d="M32 0 32 1024 32 0Z" p-id="2024"></path><path d="M64 0 64 1024 64 0Z" p-id="2025"></path><path d="M96 0 96 1024 96 0Z" p-id="2026"></path><path d="M128 0 128 1024 128 0Z" p-id="2027"></path><path d="M160 0 160 1024 160 0Z" p-id="2028"></path><path d="M192 0 192 1024 192 0Z" p-id="2029"></path><path d="M224 0 224 1024 224 0Z" p-id="2030"></path><path d="M256 0 256 1024 256 0Z" p-id="2031"></path><path d="M288 0 288 1024 288 0Z" p-id="2032"></path><path d="M320 0 320 1024 320 0Z" p-id="2033"></path><path d="M352 0 352 1024 352 0Z" p-id="2034"></path><path d="M384 0 384 1024 384 0Z" p-id="2035"></path><path d="M416 0 416 1024 416 0Z" p-id="2036"></path><path d="M448 0 448 1024 448 0Z" p-id="2037"></path><path d="M480 0 480 1024 480 0Z" p-id="2038"></path><path d="M512 0 512 1024 512 0Z" p-id="2039"></path><path d="M544 0 544 1024 544 0Z" p-id="2040"></path><path d="M576 0 576 1024 576 0Z" p-id="2041"></path><path d="M608 0 608 1024 608 0Z" p-id="2042"></path><path d="M640 0 640 1024 640 0Z" p-id="2043"></path><path d="M672 0 672 1024 672 0Z" p-id="2044"></path><path d="M704 0 704 1024 704 0Z" p-id="2045"></path><path d="M736 0 736 1024 736 0Z" p-id="2046"></path><path d="M768 0 768 1024 768 0Z" p-id="2047"></path><path d="M800 0 800 1024 800 0Z" p-id="2048"></path><path d="M832 0 832 1024 832 0Z" p-id="2049"></path><path d="M864 0 864 1024 864 0Z" p-id="2050"></path><path d="M896 0 896 1024 896 0Z" p-id="2051"></path><path d="M928 0 928 1024 928 0Z" p-id="2052"></path><path d="M960 0 960 1024 960 0Z" p-id="2053"></path><path d="M992 0 992 1024 992 0Z" p-id="2054"></path><path d="M0 32 1024 32 0 32Z" p-id="2055"></path><path d="M0 64 1024 64 0 64Z" p-id="2056"></path><path d="M0 96 1024 96 0 96Z" p-id="2057"></path><path d="M0 128 1024 128 0 128Z" p-id="2058"></path><path d="M0 160 1024 160 0 160Z" p-id="2059"></path><path d="M0 192 1024 192 0 192Z" p-id="2060"></path><path d="M0 224 1024 224 0 224Z" p-id="2061"></path><path d="M0 256 1024 256 0 256Z" p-id="2062"></path><path d="M0 288 1024 288 0 288Z" p-id="2063"></path><path d="M0 320 1024 320 0 320Z" p-id="2064"></path><path d="M0 352 1024 352 0 352Z" p-id="2065"></path><path d="M0 384 1024 384 0 384Z" p-id="2066"></path><path d="M0 416 1024 416 0 416Z" p-id="2067"></path><path d="M0 448 1024 448 0 448Z" p-id="2068"></path><path d="M0 480 1024 480 0 480Z" p-id="2069"></path><path d="M0 512 1024 512 0 512Z" p-id="2070"></path><path d="M0 544 1024 544 0 544Z" p-id="2071"></path><path d="M0 576 1024 576 0 576Z" p-id="2072"></path><path d="M0 608 1024 608 0 608Z" p-id="2073"></path><path d="M0 640 1024 640 0 640Z" p-id="2074"></path><path d="M0 672 1024 672 0 672Z" p-id="2075"></path><path d="M0 704 1024 704 0 704Z" p-id="2076"></path><path d="M0 736 1024 736 0 736Z" p-id="2077"></path><path d="M0 768 1024 768 0 768Z" p-id="2078"></path><path d="M0 800 1024 800 0 800Z" p-id="2079"></path><path d="M0 832 1024 832 0 832Z" p-id="2080"></path><path d="M0 864 1024 864 0 864Z" p-id="2081"></path><path d="M0 896 1024 896 0 896Z" p-id="2082"></path><path d="M0 928 1024 928 0 928Z" p-id="2083"></path><path d="M0 960 1024 960 0 960Z" p-id="2084"></path><path d="M0 992 1024 992 0 992Z" p-id="2085"></path><path d="M512 192c-223.318 0-416.882 130.042-512 320 95.118 189.958 288.682 320 512 320 223.312 0 416.876-130.042 512-320-95.116-189.958-288.688-320-512-320zM764.45 361.704c60.162 38.374 111.142 89.774 149.434 150.296-38.292 60.522-89.274 111.922-149.436 150.296-75.594 48.218-162.89 73.704-252.448 73.704-89.56 0-176.858-25.486-252.452-73.704-60.158-38.372-111.138-89.772-149.432-150.296 38.292-60.524 89.274-111.924 149.434-150.296 3.918-2.5 7.876-4.922 11.86-7.3-9.96 27.328-15.41 56.822-15.41 87.596 0 141.382 114.616 256 256 256s256-114.618 256-256c0-30.774-5.452-60.268-15.408-87.598 3.978 2.378 7.938 4.802 11.858 7.302l0 0zM512 416c0 53.02-42.98 96-96 96s-96-42.98-96-96 42.98-96 96-96 96 42.982 96 96z" p-id="2086"></path></svg>
+          </div>
+          <a class="hint" style="float: right;" href="#">Forgot Password?</a>
+        </div>
+        <button class="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html>
