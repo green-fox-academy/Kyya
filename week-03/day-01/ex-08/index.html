@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    .card {
+      width: 50px;
+      height: 50px;
+      background-color: #4286f4;
+    }
+    .card + .card {
+      margin-left: 16px;
+    }
+    .container {
+      width: fit-content;
+      padding: 24px;
+      margin-bottom: 12px;
+      border: 2px solid #4286f4;
+      display: flex;
+    }
+    .container.colored {
+      background-color: #ff6347;
+    }
+    .container.colored > .card {
+      background-color: #643579;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+
+  <div class="container colored">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    </div>
+</body>
+</html>
