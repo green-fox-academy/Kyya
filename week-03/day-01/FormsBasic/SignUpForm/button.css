@@ -1,0 +1,38 @@
+button {
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  padding: 0 24px;
+  color: #fff;
+  font-family: 'Century Gothic Negreta';
+  background-color: rgba(0,0,0,.3);
+  font-size: 16px;
+  height: 40px;
+  font-weight: bold;
+}
+button.submit {
+  margin-top: 40px;
+  border-radius: 3px;
+  background-color: #16a085;
+}
+button.circle {
+  margin: 0 24px;
+  margin-top: 96px;
+  font-weight: normal;
+  padding: 0;
+  color: #000;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #dddddd;
+  box-shadow: 0 2px 5px rgba(0,0,0,.45);
+}
+button.red {
+  background-color: #dd4b39;
+}
+button.blue--dark {
+  background-color: #32508e;
+}
+button.blue--light {
+  background-color: #55acee;
+}

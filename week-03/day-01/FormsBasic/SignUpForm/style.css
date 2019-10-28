@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+  font-weight: normal;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  color: #000;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: #ebebeb;
+  font-family: 'Century Gothic Negreta';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 50px 50px;
+  width: 750px;
+  height: 500px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2);
+}
+.card h1 {
+  color: #3b3c38;
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+.row {
+  display: flex;
+}
+.col {
+  width: 40%;
+  height: 100%;
+  vertical-align: top;
+}
+.field {
+  margin-bottom: 16px;
+}
+form label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  width: 100%;
+  padding-left: 12px;
+  font-size: 18px;
+  height: 48px;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-bottom: 3px solid green;
+}
+.logins--more {
+  margin-top: 64px;
+}
+.logins--more button {
+  margin-bottom: 24px;
+  height: 44px;
+  border-radius: 3px;
+  padding: 0 24px;
+  width: 100%;
+}
