@@ -1,5 +1,5 @@
-import { IQueue } from '../interfaces';
-import Stack from '../Stack/stack';
+import { IQueue } from '../Interfaces';
+import Stack from '../Stack/Stack';
 
 export default class StackQueue<T> implements IQueue<T> {
   protected stack1: Stack<T>;

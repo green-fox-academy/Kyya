@@ -1,4 +1,4 @@
-import { IBinaryNode } from '../interfaces';
+import { IBinaryNode } from '../Interfaces';
 
 export default class BinaryNode<T> implements IBinaryNode<T> {
   public data: T;

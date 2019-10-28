@@ -17,4 +17,3 @@ console.log(queue.toString());
 
 console.log('\n▶ Get peek value on queue.');
 console.log(queue.peek());
-

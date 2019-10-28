@@ -1,4 +1,4 @@
-import { IQueue } from '../interfaces';
+import { IQueue } from '../Interfaces';
 
 export default class Queue<T> implements IQueue<T> {
   protected elements: T[] = [];

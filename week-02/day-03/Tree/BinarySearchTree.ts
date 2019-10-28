@@ -1,4 +1,4 @@
-import { ITree } from '../interfaces';
+import { ITree } from '../Interfaces';
 import BinaryNode from './BinaryNode';
 
 export default class BinarySearchTree<T> implements ITree<T> {

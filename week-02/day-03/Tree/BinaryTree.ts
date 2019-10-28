@@ -1,6 +1,6 @@
-import { ITree } from '../interfaces';
+import { ITree } from '../Interfaces';
 import BinaryNode from './BinaryNode';
-import Queue from '../queue/Queue';
+import Queue from '../Queue/Queue';
 
 export default class BinaryTree<T> implements ITree<T> {
   protected root = null;

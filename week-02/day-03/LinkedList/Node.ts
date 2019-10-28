@@ -1,4 +1,4 @@
-import { INode } from '../interfaces';
+import { INode } from '../Interfaces';
 
 export default class Node<T> implements INode<T> {
   public data: T;

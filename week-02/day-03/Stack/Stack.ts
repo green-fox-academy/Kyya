@@ -1,4 +1,4 @@
-import { IStack } from '../interfaces';
+import { IStack } from '../Interfaces';
 
 export default class Stack<T> implements IStack<T> {
   protected elements: T[] = [];

@@ -1,6 +1,6 @@
-import KStack from './stack';
+import Stack from './Stack';
 
-const stack = new KStack();
+const stack = new Stack();
 
 console.log('\n▶ Call `push` method, then print the stack.');
 stack.push('apple');

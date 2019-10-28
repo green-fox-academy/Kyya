@@ -1,4 +1,4 @@
-import { ILinkedList } from '../interfaces';
+import { ILinkedList } from '../Interfaces';
 import Node from './Node';
 
 export default class LinkedList<T> implements ILinkedList<T> {

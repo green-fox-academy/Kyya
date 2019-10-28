@@ -1,4 +1,4 @@
-import LinkedStack from './LinkedStack'
+import LinkedStack from './LinkedStack';
 
 const stack = new LinkedStack<string>();
 

@@ -1,5 +1,5 @@
-import LinkedList from '../LinkedList/LinkedList'
-import { IStack } from '../interfaces';
+import LinkedList from '../LinkedList/LinkedList';
+import { IStack } from '../Interfaces';
 
 export default class LinkedStack<T> extends LinkedList<T> implements IStack<T> {
   empty(): boolean {
