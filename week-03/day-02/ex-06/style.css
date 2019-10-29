@@ -1,0 +1,105 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+h2 {
+  white-space: nowrap;
+}
+body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+header {
+  width: 100%;
+  height: 64px;
+  background-color: #b02aff;
+}
+header nav {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header ul {
+  font-size: 0;
+  padding-left: 18px;
+  white-space: nowrap;
+}
+header ul .navLink {
+  height: 35px;
+  min-width: 120px;
+  display: inline-block;
+  background-color: #2aeaff;
+}
+header ul .navLink + .navLink {
+  margin-left: 15px;
+}
+header ul .navIcon {
+  height: 35px;
+  min-width: 35px;
+  display: inline-block;
+  background-color: #2aeaff;
+}
+header ul .navIcon + .navIcon {
+  margin-left: 15px;
+}
+header ul.right {
+  padding-right: 18px;
+  float: right;
+}
+.container {
+  width: 100%;
+  height: 648px;
+  display: flex;
+}
+.container main {
+  flex: 1;
+  overflow: hidden;
+  padding: 32px 22px;
+  min-width: 500px;
+  height: 100%;
+  background-color: #ffd62a;
+}
+.container main .item-list {
+  margin: 12px 0;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 100px 100px 100px 100px;
+}
+.container main .item-list .item {
+  height: 100px;
+  background-color: #e90020;
+}
+.container main section {
+  display: flex;
+}
+.container main section div {
+  flex: 1;
+}
+.container aside {
+  overflow: hidden;
+  min-width: 200px;
+  width: 255px;
+  height: 100%;
+  padding: 30px 16px;
+  background-color: #51d400;
+}
+.container aside .banner-list {
+  margin-bottom: 30px;
+}
+.container aside .banner {
+  height: 45px;
+  width: 100%;
+  background-color: #573559;
+}
+.container aside .banner + .banner {
+  margin-top: 8px;
+}

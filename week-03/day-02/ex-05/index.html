@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>EX - 05</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      padding: 55px;
+    }
+    body > * {
+      margin: 0 auto;
+    }
+    header {
+      width: 540px;
+      height: 100px;
+      background-color: cyan;
+    }
+    .container {
+      width: 540px;
+      height: 500px;
+      display: flex;
+      justify-content: space-between;
+    }
+    aside.left {
+      width: 100px;
+      background-color: orange;
+    }
+    main {
+      padding: 20px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      width: 300px;
+      background-color: red;
+    }
+    aside.right {
+      width: 100px;
+      background-color: purple;
+    }
+    footer {
+      width: 540px;
+      height: 100px;
+      background-color: blue;
+    }
+    main > div {
+      width: 50px;
+      height: 50px;
+      background-color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <header></header>
+  <div class="container">
+    <aside class="left"></aside>
+    <main>
+      <div></div>
+    </main>
+    <aside class="right"></aside>
+  </div>
+  <footer></footer>
+</body>
+
+</html>
