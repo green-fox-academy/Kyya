@@ -1,5 +1,6 @@
 import BinaryTree from './BinaryTree';
 import BinarySearchTree from './BinarySearchTree';
+import BinaryNode from './BinaryNode';
 
 const tree = new BinaryTree<string>();
 
@@ -10,6 +11,9 @@ tree.add('A');
 
 console.log('\n\x1b[1m▶ Print Generic tree.\x1b[0m');
 console.log(tree.toString());
+
+console.log('\n▶ Print Breadth Traversing tree.');
+tree.breadthTraversing(node => console.log(node.data));
 
 console.log('\n▶ Print Pre Order tree.');
 console.log(tree.preOrder());

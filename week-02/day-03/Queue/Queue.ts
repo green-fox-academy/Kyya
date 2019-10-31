@@ -19,6 +19,10 @@ export default class Queue<T> implements IQueue<T> {
     return this.elements.shift();
   }
 
+  get length(): number {
+    return this.elements.length;
+  }
+
   toString(): string {
     return this.elements.toString();
   }
