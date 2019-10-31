@@ -1,5 +1,5 @@
 // Merge the two arrays: left and right
-function merge(left: Array<number>, right: Array<number>): Array<number> {
+function merge(left: number[], right: number[]): number[] {
   const resultArray = [];
   let leftIndex = 0;
   let rightIndex = 0;
@@ -21,7 +21,7 @@ function merge(left: Array<number>, right: Array<number>): Array<number> {
     .concat(right.slice(rightIndex));
 }
 
-export default function MergeSort(array: Array<number>): Array<number> {
+export default function mergeSort(array: number[]): number[] {
   if (array.length <= 1) {
     return array;
   }
@@ -29,10 +29,10 @@ export default function MergeSort(array: Array<number>): Array<number> {
   const left = array.slice(0, middle);
   const right = array.slice(middle);
   return merge(
-    MergeSort(left),
-    MergeSort(right),
+    mergeSort(left),
+    mergeSort(right),
   );
 }
 
-const sortedArray = MergeSort([1, 6, 4, 2, 7, 2, 8, 4, 3]);
+const sortedArray = mergeSort([1, 6, 4, 2, 7, 2, 8, 4, 3]);
 console.log(sortedArray);
