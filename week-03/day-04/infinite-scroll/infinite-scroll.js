@@ -1,5 +1,6 @@
 let scrollThreshold = 300;
 let container = document.querySelector('.container');
+const letters = '0123456789ABCDEF';
 
 // from Internet
 function throttle(func, delay) {
@@ -28,7 +29,6 @@ function getScrollBottom() {
 }
 
 function getRandomColor() {
-  let letters = '0123456789ABCDEF';
   let color = [...Array(6)].map(() => letters[Math.floor(Math.random() * 16)]).join('')
   return `#${color}`;
 }
