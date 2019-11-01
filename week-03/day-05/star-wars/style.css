@@ -1,0 +1,69 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+ul, ol, li {
+  list-style: none;
+}
+label {
+  display: block;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  padding: 32px 60px;
+  max-width: 1024px;
+  width: 70%;
+}
+input[type="text"] {
+  border-radius: 8px;
+  outline: none;
+  height: 14px;
+  padding: 8px 12px;
+  border: 1px solid #333;
+}
+button {
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #333;
+  outline: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.info {
+  margin-top: 12px;
+  padding: 8px 12px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+.actors {
+  width: 160px;
+}
+.films {
+  flex: 1;
+  min-width: 200px;
+  overflow: hidden;
+  margin-left: 24px;
+}
+.actors li,
+.films li {
+  padding: 4px 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.actors li {
+  border-right: 1px dashed #333;
+}
+.actors li:hover,
+.films li:hover {
+  text-decoration: underline;
+}
