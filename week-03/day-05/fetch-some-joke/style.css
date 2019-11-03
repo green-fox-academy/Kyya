@@ -1,0 +1,17 @@
+button {
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #333;
+  outline: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+p {
+  margin: 8px 0;
+}
+.container {
+  padding: 0 8px;
+  margin-bottom: 8px;
+  border: 1px solid #333;
+  border-radius: 8px;
+}

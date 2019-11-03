@@ -6,6 +6,7 @@
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
+    "q-io": "^1.13.6",
     "typescript": "^3.6.4"
   }
 }
