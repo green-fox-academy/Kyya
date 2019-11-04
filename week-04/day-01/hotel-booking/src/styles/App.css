@@ -1,0 +1,63 @@
+.App {
+  max-width: 1024px;
+  font-family: serif;
+}
+
+.container {
+  display: flex;
+  margin-top: 17px;
+}
+
+header {
+  margin-top: 17px;
+  font-weight: bold;
+  border: 1px solid #333;
+  padding: 4px 6px;
+}
+
+aside {
+  width: 210px;
+}
+
+main {
+  flex: 1;
+  margin-left: 17px;
+}
+
+.HotelListItem {
+  border: 1px solid #333;
+  padding: 4px 6px;
+}
+
+.HotelFilter,
+.HotelListItem {
+  border: 1px solid #333;
+  margin-bottom: 17px;
+}
+
+.HotelListItem img {
+  width: 150px;
+  height: 150px;
+}
+
+.HotelListItem h1 {
+  font-size: 18px;
+}
+
+.HotelListItem .content {
+  display: flex;
+  padding: 2px;
+}
+
+.HotelListItem .content .description {
+  padding-left: 12px;
+}
+
+.HotelFilter h1 {
+  font-size: 16px;
+  padding: 6px;
+}
+
+.HotelFilter ul {
+  padding: 0 14px 12px;
+}
