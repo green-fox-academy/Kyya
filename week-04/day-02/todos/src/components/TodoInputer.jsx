@@ -21,7 +21,7 @@ export default class TodoInputer extends Component {
     return (
       <div className="todo-inputer">
         <input value={this.state.value} onChange={this.handleChange}/>
-        <button className="button button-text" onClick={this.handleAction}>ADD</button>
+        <button className="button button-text" onClick={this.handleAction}>Add</button>
       </div>
     )
   }

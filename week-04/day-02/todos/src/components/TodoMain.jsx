@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import TodoInputer from './TodoInputer';
 import TodoList from './TodoList';
@@ -12,8 +12,14 @@ const defaultTodos = [
   'Nail it'
 ]
 
-export default function TodoMain() {
+export default function TodoMain(props) {
   const [ todos, setTodos ] = useState(defaultTodos.map(item=>({ text: item, completed: false})));
+  const theme = props.match.params.name;
+
+  useEffect(() => {
+    document.body.classList.add(`theme-${theme}`);
+    return () => document.body.classList.remove(`theme-${theme}`);
+  })
 
   function handleAction(text) {
     if (text !== '' && !todos.map(item=>item.text).includes(text)) {
@@ -45,7 +51,7 @@ export default function TodoMain() {
       <h1 className="heading">TODOS</h1>
       <TodoInputer onAction={handleAction}/>
       <TodoList data={todos} onToggle={toggleTodo} onRemove={removeTodo}/>
-      <Link to="/theme" className="link-text">Theme Switcher</Link>
+      <Link to="/themes" className="link-text">Theme Switcher</Link>
     </Fragment>
   )
 }

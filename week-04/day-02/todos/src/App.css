@@ -60,14 +60,11 @@ main:hover {
   border: none;
   flex: 1;
 }
-.todo-inputer button {
-  width: 100px;
-}
 
 .theme-text {
+  display: block;
   font-family: 'Lato', sans-serif;
   font-size: 2rem;
-  line-height: 2;
   color: #b8b8b8;
   cursor: pointer;
 }
@@ -84,7 +81,8 @@ main:hover {
   cursor: pointer;
   outline: none;
   border: none;
-  padding: 12px;
+  padding: 8px 12px;
+  font-weight: bold;
   background-color: #df69e8;
 }
 
@@ -102,6 +100,14 @@ main:hover {
   display: block;
   text-align: center;
   width: 100%;
+}
+.theme-text,
+.link-text {
+  transition: color .2s ease;
+}
+.theme-text:hover,
+.link-text:hover {
+  color: #58a9ba;
 }
 .icon {
   cursor: pointer;
@@ -121,14 +127,16 @@ main:hover {
   margin-left: 8px;
 }
 
-.icon-del {
-  background-image: url('./assets/del.svg');
+.icon-remove {
+  fill: #b8b8b8;
 }
 
 .icon-check {
-  background-image: url('./assets/check.svg');
+  fill: #df69e8;
 }
-
+.icon-check path:last-child {
+  fill: #fff;
+}
 .icon-check-outline {
-  background-image: url('./assets/check-outline.svg');
+  fill: #b8b8b8;
 }

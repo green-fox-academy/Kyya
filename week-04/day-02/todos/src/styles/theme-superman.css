@@ -1,0 +1,38 @@
+body.theme-superman {
+  background-color: #fcbb44;
+}
+.theme-superman .container {
+  background-color: #95bfdb;
+}
+.theme-superman .heading,
+.theme-superman .todo-item,
+.theme-superman .heading,
+.theme-superman .todo-inputer input,
+.theme-superman .link-text {
+  color: #194094;
+}
+.theme-superman .todo-item.completed {
+  color: #688eb0;
+}
+.theme-superman .todo-inputer {
+  border: 2px solid #194094;
+  box-shadow: inset 0 0 5px #194094;
+}
+.theme-superman .todo-inputer button {
+  background-color: #de121b;
+}
+
+.theme-superman .icon-remove {
+  fill: #194094;
+}
+
+.theme-superman .icon-check {
+  fill: #de121b;
+}
+.theme-superman .icon-check:first-child {
+  fill: #95bfdb;
+}
+
+.theme-superman .icon-check-outline {
+  fill: #194094;
+}

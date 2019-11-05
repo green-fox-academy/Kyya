@@ -4,6 +4,8 @@ import TodoMain from './components/TodoMain';
 import ThemeSwitcher from './components/ThemeSwitcher';
 
 import './App.css';
+import './styles/theme-superman.css';
+import './styles/theme-batman.css';
 
 function TodoContainer(props) {
   return <main className="container">{props.children}</main>
@@ -14,7 +16,8 @@ function App() {
     <Router>
       <TodoContainer>
         <Route exact path="/" component={TodoMain}/>
-        <Route path ="/theme" component={ThemeSwitcher}/>
+        <Route path ="/themes" component={ThemeSwitcher}/>
+        <Route path="/themed/:name" component={TodoMain}/>
       </TodoContainer>
     </Router>
   );
