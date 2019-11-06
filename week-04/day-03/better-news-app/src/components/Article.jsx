@@ -1,11 +1,14 @@
 import React from 'react';
 
-export default function Article(props) {
-  return (
-    <article>
-      <span className="time">{new Date(props.publishedAt).toLocaleDateString('zh-CN')}</span>
-      <a className="title" target="_blank" href={props.url} rel="noopener noreferrer">{props.title}</a>
-      <p>{props.description}</p>
-    </article>
-  )
-}
+export default class Article extends React.Component {
+
+  render() {
+    return (
+      <article>
+        <span className="time">{new Date(this.props.publishedAt).toLocaleDateString('zh-CN')}</span>
+        <a className="title" target="_blank" href={this.props.url} rel="noopener noreferrer">{this.props.title}</a>
+        <p>{this.props.description}</p>
+      </article>
+    )
+  }
+} 
