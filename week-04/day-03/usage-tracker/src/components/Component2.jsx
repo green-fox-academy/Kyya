@@ -2,13 +2,12 @@ import React from 'react';
 
 export default class Component2 extends React.Component {
 
-  constructor(props) {
-    super(props);
+  componentDidMount() {
     this.startTime = Date.now();
   }
-
-  componentDidMount() {
-    this.props.onMount({ name: 'Component 2', time: Date.now() - this.startTime})
+  
+  componentWillUnmount() {
+    this.props.onUnMount({ name: 'Component 2', time: `${Math.ceil((Date.now() - this.startTime) / 1000)}s` });
   }
 
   render() {

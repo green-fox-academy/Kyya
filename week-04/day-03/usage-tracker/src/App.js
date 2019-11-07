@@ -9,7 +9,7 @@ function App() {
   const [items, setItems] = useState([]);
 
   function addItem(item) {
-    setItems([...items, item])
+    setItems([...items, item]);
   }
 
   return (
@@ -17,8 +17,8 @@ function App() {
       <Router>
         <Usage items={items}/>
         <Switch>
-          <Route path="/component/1" render={() => <Component1 onMount={addItem}/>}/>
-          <Route path="/component/2" render={() => <Component2 onMount={addItem}/>}/>
+          <Route path="/component/1" render={() => <Component1 onUnMount={addItem}/>}/>
+          <Route path="/component/2" render={() => <Component2 onUnMount={addItem}/>}/>
         </Switch>
       </Router>
     </div>
