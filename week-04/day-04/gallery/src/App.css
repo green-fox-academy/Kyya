@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body, #root, .App {
+  height: 100%;
+}
+
+body {
+  background-color: #fff;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 200px rgb(0,0,0,.5);
+}
+
+.container {
+  width: 1200px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 16px 32px rgba(0,0,0,.25);
+}
+
+.gallery-button {
+  width: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #eee;
+}
+
+.gallery-button:hover svg path {
+  fill: rgba(0,0,0,.3);
+}
+
+.gallery-main {
+  flex: 1;
+  font-size: 0;
+  position: relative;
+  box-shadow: inset 0 0 200px rgb(0,0,0,.5);
+  max-width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.gallery-meta {
+  padding: 24px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 120px;
+  background-color: rgba(0,0,0,.5);
+  backdrop-filter: blur(5px);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.gallery-meta h1 {
+  margin-bottom: 12px;
+  color: #fff;
+  font-size: 24px;
+}
+
+.gallery-meta p {
+  color: #fff;
+  font-size: 20px;
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,.5);
+  transform: translateY(0);
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.thumbnail + .thumbnail {
+  margin-left: 12px;
+}
+
+.thumbnail.active,
+.thumbnail:hover {
+  box-shadow: 0 10px 10px rgba(0,0,0,.5);
+  transform: translateY(-5px);
+}
+
+.thumbnail.active::before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 50px 50px;
+  transform: rotate(90deg) translate(-70%, 50%);
+  width: 0;
+  height: 0;
+  border: 25px solid transparent;
+  border-right: 25px solid #fff;
+}
+
+.thumbnail img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.thumbnail div {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
