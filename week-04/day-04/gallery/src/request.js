@@ -5,7 +5,7 @@ const baseURL = `https://api.unsplash.com`;
 const headers = { "Authorization": `Client-ID ${API_KEY2}` };
 
 export function getRandomPhotos() {
-  return fetch(`${baseURL}/photos/random?collections=4690903&count=7`, { headers })
+  return fetch(`${baseURL}/photos/random?collections=4690903&count=20`, { headers })
     .then(res => {
       console.log('Ratelimit-Remaining: ' + res.headers.get('X-Ratelimit-Remaining'))
       return res;

@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Arrow from './Arrow';
 
 export default function Gallery(props) {
 
-  if (props.display === null) {
-    return 'Loading...'
+  function handleKeyDown(ev) {
+    if (ev.key === "ArrowRight") {
+      nextPhoto();
+    } else if (ev.key === "ArrowLeft") {
+      prevPhoto();
+    }
   }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  })
 
   function nextPhoto() {
     props.onActiveIndexChange(props.activeIndex + 1);
@@ -13,6 +22,10 @@ export default function Gallery(props) {
 
   function prevPhoto() {
     props.onActiveIndexChange(props.activeIndex - 1);
+  }
+
+  if (props.display === null) {
+    return 'Loading...'
   }
 
   return (
