@@ -9,6 +9,7 @@ html, body, #root, .App {
 }
 
 body {
+  overflow-x: hidden;
   background-color: #fff;
 }
 
@@ -83,7 +84,7 @@ body {
 .thumbnails {
   margin-top: 16px;
   padding: 16px 8px;
-  overflow-y: overlay;
+  overflow-y: auto;
 }
 .thumbnails::-webkit-scrollbar-track {
   background: transparent;
@@ -111,6 +112,7 @@ body {
 }
 .thumbnail {
   width: 100px;
+  min-width: 100px;
   height: 100px;
   cursor: pointer;
   position: relative;
