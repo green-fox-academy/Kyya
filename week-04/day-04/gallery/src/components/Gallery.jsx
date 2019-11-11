@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
+import { setActiveIndex } from '../redux/actionCreator';
+import { useSelector, useDispatch } from 'react-redux';
 import Arrow from './Arrow';
 
-export default function Gallery(props) {
+export default function Gallery() {
+  const activeIndex = useSelector(state => state.activeIndex);
+  const lengthOfPhotos = useSelector(state => state.photos.length);
+  const display = useSelector(state => state.photos[state.activeIndex] || null);
+  const dispatch = useDispatch();
 
   function handleKeyDown(ev) {
     if (ev.key === "ArrowRight") {
@@ -17,24 +23,26 @@ export default function Gallery(props) {
   })
 
   function nextPhoto() {
-    props.onActiveIndexChange(props.activeIndex + 1);
+    const newIndex = (activeIndex + 1) < 0 ? lengthOfPhotos - 1 : (activeIndex + 1) % lengthOfPhotos;
+    dispatch(setActiveIndex(newIndex));
   }
 
   function prevPhoto() {
-    props.onActiveIndexChange(props.activeIndex - 1);
+    const newIndex = (activeIndex - 1) < 0 ? lengthOfPhotos - 1 : (activeIndex - 1) % lengthOfPhotos;
+    dispatch(setActiveIndex(newIndex));
   }
 
-  if (props.display === null) {
+  if (display === null) {
     return 'Loading...'
   }
 
   return (
     <div className="gallery">
       <button className="gallery-button" onClick={prevPhoto}><Arrow /></button>
-      <div className="gallery-main" style={{ backgroundImage: `url(${props.display.urls.regular})`}}>
+      <div className="gallery-main" style={{ backgroundImage: `url(${display.urls.regular})`}}>
         <div className="gallery-meta">
-          <h1>{props.display.description || 'Title'}</h1>
-          <p>{props.display.alt_description || 'Description'}</p>
+          <h1>{display.description || 'Title'}</h1>
+          <p>{display.alt_description || 'Description'}</p>
         </div>
       </div>
       <button className="gallery-button" onClick={nextPhoto}><Arrow right /></button>
