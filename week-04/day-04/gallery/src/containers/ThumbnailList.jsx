@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { fetchPhotos, setActiveIndex } from '../redux/actionCreator'
 import { useSelector, useDispatch } from 'react-redux';
-import Thumbnail from './Thumbnail';
+import Thumbnail from '../components/Thumbnail';
 
 const SCROLL_DURATION = 7;
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { setActiveIndex } from '../redux/actionCreator';
 import { useSelector, useDispatch } from 'react-redux';
-import Arrow from './Arrow';
+import Arrow from '../components/Arrow';
 
 export default function Gallery() {
   const activeIndex = useSelector(state => state.activeIndex);

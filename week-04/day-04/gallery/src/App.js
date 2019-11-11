@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
-import Gallery from './components/Gallery';
-import ThumbnailList from './components/ThumbnailList';
+import Gallery from './containers/Gallery';
+import ThumbnailList from './containers/ThumbnailList';
 import './App.css';
 
 function App() {
