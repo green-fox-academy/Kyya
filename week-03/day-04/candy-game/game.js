@@ -14,8 +14,6 @@ let rate = 1000;
 const candiesElement = document.querySelector('.candies');
 const lollypopsElement = document.querySelector('.lollypops');
 const speedElement = document.querySelector('.speed');
-render();
-
 
 function handler() {
   if (lollypops >= 10) {
@@ -23,9 +21,9 @@ function handler() {
     render();
   }
 }
-let timer = setInterval(handler, rate);
 
 function render() {
+  // textContent
   candiesElement.innerText = candies;
   lollypopsElement.innerText = '🍭'.repeat(lollypops);
   if (lollypops >= 10) {
@@ -57,3 +55,6 @@ document.querySelector('.candy-machine').onclick = function() {
   }
 }
 
+let timer = setInterval(handler, rate);
+
+render();
