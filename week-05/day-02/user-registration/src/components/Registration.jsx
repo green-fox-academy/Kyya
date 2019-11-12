@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import useForm from "react-hook-form";
+import React, { useState } from 'react';
+import useForm from 'react-hook-form';
 
 function Registration() {
   const [isDisabled, setDisabled] = useState(true);
@@ -12,13 +12,10 @@ function Registration() {
   function handleChange() {
     setDisabled(true);
     triggerValidation();
-  }
-
-  useEffect(() => { 
     if (Object.keys(errors).length === 0) {
       setDisabled(false);
     }
-  });
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
