@@ -2,19 +2,10 @@ import React from 'react';
 import useForm from 'react-hook-form';
 
 function PizzaPicker() {
-  const { handleSubmit, register, getValues, errors } = useForm();
+  const { handleSubmit, register } = useForm();
 
   function onSubmit(value) {
     console.log(value);
-  }
-
-  function handleClick(ev) {
-    ev.preventDefault();
-    console.log(getValues());
-  }
-
-  function handleChange() {
-    
   }
 
   return (
@@ -22,7 +13,7 @@ function PizzaPicker() {
       <h1>Pizza Picker</h1>
       <fieldset>
         Base:
-        <select name="base" ref={register} onChange={handleChange}>
+        <select name="base" ref={register}>
           <option value="Cheese-Stuffed">Cheese-Stuffed</option>
           <option value="Flatbread">Flatbread</option>
           <option value="Sicilian-Style">Sicilian-Style</option>
@@ -31,15 +22,15 @@ function PizzaPicker() {
 
       <fieldset>
         Toppings:
-        <label><input type="checkbox" name="mushrooms" ref={register}/> Mushrooms</label>
-        <label><input type="checkbox" name="onions" ref={register}/> Onions</label>
-        <label><input type="checkbox" name="bacon" ref={register}/> Bacon</label>
+        <label><input type="checkbox" name="toppings.mushrooms" ref={register}/> Mushrooms</label>
+        <label><input type="checkbox" name="toppings.onions" ref={register}/> Onions</label>
+        <label><input type="checkbox" name="toppings.bacon" ref={register}/> Bacon</label>
       </fieldset>
 
       <fieldset>
         Cut?
-        <label><input type="radio" name="cut" value="true" ref={register}/> YES</label>
-        <label><input type="radio" name="cut" value="false" ref={register}/> NO</label>
+        <label><input type="radio" name="cut" value={true} defaultChecked ref={register}/> YES</label>
+        <label><input type="radio" name="cut" value={false} ref={register}/> NO</label>
       </fieldset>
 
       <fieldset>
@@ -47,7 +38,7 @@ function PizzaPicker() {
         <textarea name="remarks" ref={register}></textarea>
       </fieldset>
 
-      <button onClick={handleClick}>Submit</button>
+      <button type="submit">Submit</button>
     </form>
   )
 }
