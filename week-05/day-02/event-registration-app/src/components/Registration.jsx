@@ -1,44 +1,41 @@
 import React, { useState } from 'react';
+import useForm from 'react-hook-form';
 
 function Registration() {
-  const [hasSubmitted, setSubmitted] = useState(false);
-  const [data, setData] = useState({
-    firstName: '',
-    lastName: '',
-    email: ''
-  });
+  const { register, handleSubmit } = useForm();
+  const [ submittedValues, setSubmittedValues ] = useState({});
 
-  function handleChange(ev) {
-    setData({
-      ...data,
-      [ev.target.name]: ev.target.value
-    });
-  }
-
-  function handleSubmit(ev) {
-    ev.preventDefault();
-    setSubmitted(true);
+  function onSubmit(values) {
+    setSubmittedValues(values);
+    console.log(values);
   }
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <h1>Registration</h1>
         <label>
           First Name:
-          <input type="text" name="firstName" value={data.firstName} onChange={handleChange}/>
+          <input type="text" name="firstName" ref={register}/>
         </label>
+
         <label>
           Last Name:
-          <input type="text" name="lastName" value={data.lastName} onChange={handleChange}/>
+          <input type="text" name="lastName" ref={register}/>
         </label>
+
         <label>
           Email:
-          <input type="email" name="email" value={data.email} onChange={handleChange}/>
+          <input type="email" name="email"  ref={register}/>
         </label>
-        <button onClick={handleSubmit}>Submit</button>
+
+        <button type="submit">Submit</button>
       </form>
       <ul>
-        { hasSubmitted && Object.values(data).map((item, index) => <li key={index}>{item}</li>) }
+        {
+          Object.keys(submittedValues).length > 0 
+          && Object.values(submittedValues).map((item, index) => <li key={index}>{item}</li>)
+        }
       </ul>
     </>
   )
