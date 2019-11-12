@@ -1,0 +1,25 @@
+html, body, #root, .App {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #333;
+  padding: 12px;
+}
+
+label {
+  display: flex;
+  justify-content: space-between;
+}
