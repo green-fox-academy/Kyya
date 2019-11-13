@@ -1,0 +1,85 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-family: '思源宋体 CN', serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  max-width: 1024px;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+h1 {
+  margin: 12px 0;
+}
+
+.posts {
+  padding-bottom: 32px;
+  max-width: 1024px;
+}
+
+article {
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: rgba(0,0,0,.05);
+  position: relative;
+  overflow: hidden;
+}
+
+article .title {
+  font-weight: bold;
+  font-size: 22px;
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+article .title:hover {
+  text-decoration: underline;
+}
+
+article + article {
+  margin-top: 16px;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #cef;
+  border-color: #cef transparent #cef transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
