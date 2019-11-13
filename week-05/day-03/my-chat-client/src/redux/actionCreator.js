@@ -46,7 +46,7 @@ export function sendMessage(text) {
   return (dispatch) => {
     fetch(URL, {
       method: 'POST',
-      body: JSON.stringify({ user: MYSELF, text }),
+      body: JSON.stringify({ user: MYSELF, text, style: { color: '#000', background: '#98e165' } }),
       headers: {
         'content-type': 'application/json'
       }
