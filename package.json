@@ -3,12 +3,17 @@
     "@types/node": "^12.11.7",
     "@typescript-eslint/eslint-plugin": "^2.5.0",
     "@typescript-eslint/parser": "^2.5.0",
+    "ejs": "^2.7.1",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
+    "express": "^4.17.1",
     "q-io": "^1.13.6",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.4",
     "typescript": "^3.6.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   }
 }
