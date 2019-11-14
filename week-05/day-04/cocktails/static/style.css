@@ -1,0 +1,60 @@
+table {
+  border-collapse: collapse;
+  font-family: sans-serif;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: row;
+}
+
+li {
+  list-style: none;
+}
+
+li + li {
+  margin-left: 8px;
+}
+
+tr, th, td {
+  border: 2px solid #fff;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+th {
+  min-width: 120px;
+  padding: 8px 0;
+  color: #fff;
+  background-color: #000;
+}
+
+td {
+  padding: 4px 12px;
+}
+
+td span {
+  font-size: 13px;
+}
+
+td p {
+  font-size: 12px;
+}
+
+tr td:last-child {
+  text-align: center;
+}
+
+tr:nth-child(2n+1) {
+  background-color: #eeeeee;
+}
