@@ -1,0 +1,150 @@
+body {
+  color: #34495e;
+  background-color: #ecf0f1;
+  font-family: Lato, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+body > h1,
+body > h2 {
+  margin: 12px 0;
+}
+
+.card {
+  cursor: pointer;
+  display: flex;
+  padding: 12px;
+  flex-direction: row;
+  border-radius: 5px;
+  box-shadow: 1px 2px 5px rgba(0,0,0,.2);
+  background-color: #ffffff;
+}
+
+.card img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.forecast-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.forecast-list .card + .card {
+  margin-top: 12px;
+}
+
+.detail-list .card + .card {
+  margin-left: 12px;
+}
+
+.card.forecast {
+  width: 320px;
+  position: relative;
+  justify-content: space-between;
+  transition: transform .2s ease-out;
+}
+
+.card.forecast:hover {
+  transform: translateX(10px);
+}
+
+.card.forecast h1 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card.forecast h2 {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card.forecast img {
+  width: 64px;
+  height: 64px;
+}
+
+.card.forecast > a {
+  outline: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.card.forecast .information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 12px;
+}
+
+.card.forecast .visualization {
+  display: flex;
+  flex-direction: row;
+}
+
+.card.forecast .visualization .temperature {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+
+.card.detail {
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s ease-out;
+}
+
+.card.detail:hover {
+  transform: translateY(-10px);
+}
+
+.card.detail > * {
+  display: flex;
+  justify-content: center;
+}
+
+.card.detail img {
+  width: 100px;
+  height: 100px;
+}
+
+.card.detail .temperature {
+  font-size: 24px;
+}
+
+.card.detail .message {
+  padding: 20px 0 32px;
+  font-size: 15px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
