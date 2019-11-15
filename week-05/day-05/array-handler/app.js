@@ -21,9 +21,11 @@ app.post('/arrays', (req, res) => {
       case 'double':
         result = { result: numbers.map(number => number * 2)};
         break;
+      default:
+        result = { error: "Unknown type" };
     }
   }
-  res.json(result);
+  res.send(result);
 });
 
 app.listen(PORT, () => {
