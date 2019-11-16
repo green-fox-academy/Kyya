@@ -20,7 +20,12 @@ const cocktails = [
 const alcoholList = ['gin', 'vodka', 'rum', 'tequila'];
 
 app.get('/', (req, res) => {
-  res.render('home', { cocktails, alcoholList });
+  const { alcohol } = req.query;
+  res.render('home', {
+    alcohol: alcohol ? alcohol : '',
+    cocktails: alcohol ? cocktails.filter(cocktail => cocktail.contains.includes(alcohol)) : cocktails,
+    alcoholList
+  });
 });
 
 app.listen(PORT, () => {

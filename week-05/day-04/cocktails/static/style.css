@@ -8,6 +8,15 @@ h1 {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+table {
+  min-width: 452px;
+}
+
 ul {
   padding: 0;
   margin: 12px 0;
