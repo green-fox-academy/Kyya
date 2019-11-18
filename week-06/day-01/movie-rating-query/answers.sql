@@ -74,27 +74,20 @@ ORDER BY ratingSpread DESC, title ASC;
 -- (Make sure to calculate the average rating for each movie,
 -- then the average of those averages for movies before 1980 and movies after.
 -- Don't just calculate the overall average rating before and after 1980.)
-SELECT ABS(avgBefore - avgAfter) FROM
-(
-    SELECT AVG(starsBefore1980) as avgBefore FROM
-    (
-        SELECT mID, AVG(stars) as starsBefore1980
-        FROM Movie
-        INNER JOIN Rating USING(mID)
-        WHERE year < 1980
-        GROUP BY mID
-    ) AS T1
-) AS TT1,
-(
-    SELECT AVG(starsAfter1980) as avgAfter FROM
-    (
-        SELECT mID, AVG(stars) as starsAfter1980
-        FROM Movie
-        INNER JOIN Rating USING(mID)
-        WHERE year > 1980
-        GROUP BY mID
-    ) AS T2
-) AS TT2;
+SELECT ABS(AVG(Before1980.avg) - AVG(After1980.avg))
+FROM (
+    SELECT AVG(stars) as avg
+    FROM Movie
+    INNER JOIN Rating USING(mID)
+    WHERE year < 1980
+    GROUP BY mID
+) AS Before1980, (
+    SELECT AVG(stars) as avg
+    FROM Movie
+    INNER JOIN Rating USING(mID)
+    WHERE year > 1980
+    GROUP BY mID
+) AS After1980;
 
 -- EXTRA Q1
 -- Find the names of all reviewers who rated Gone with the Wind.
