@@ -36,6 +36,66 @@ WHERE Rating.rID = Reviewer.rID
 AND Rating.mID = Movie.mID
 ORDER BY Reviewer.name, Movie.title, Rating.stars ASC;
 
+-- Q6
+-- For all cases where the same reviewer rated the same movie twice
+-- and gave it a higher rating the second time, return the reviewer's name and the title of the movie.
+SELECT name, title
+FROM Movie
+INNER JOIN Rating R1 USING(mId)
+INNER JOIN Rating R2 USING(rId)
+INNER JOIN Reviewer USING(rId)
+WHERE R1.mId = R2.mId
+AND R1.ratingDate < R2.ratingDate
+AND R1.stars < R2.stars;
+
+-- Q7
+-- For each movie that has at least one rating, find the highest number of stars that movie received.
+-- Return the movie title and number of stars. Sort by movie title.
+SELECT title, MAX(stars)
+FROM Movie
+INNER JOIN Rating USING(mID)
+GROUP BY title
+ORDER BY title ASC;
+
+-- Q8
+-- For each movie, return the title and the 'rating spread', that is,
+-- the difference between highest and lowest ratings given to that movie.
+-- Sort by rating spread from highest to lowest, then by movie title.
+SELECT title, MAX(stars) - MIN(stars) as ratingSpread
+FROM Movie
+LEFT JOIN Rating USING(mID)
+WHERE stars IS NOT NULL
+GROUP BY mID
+ORDER BY ratingSpread DESC, title ASC;
+
+-- Q9
+-- Find the difference between the average rating of movies released before 1980
+-- and the average rating of movies released after 1980.
+-- (Make sure to calculate the average rating for each movie,
+-- then the average of those averages for movies before 1980 and movies after.
+-- Don't just calculate the overall average rating before and after 1980.)
+SELECT ABS(avgBefore - avgAfter) FROM
+(
+    SELECT AVG(starsBefore1980) as avgBefore FROM
+    (
+        SELECT mID, AVG(stars) as starsBefore1980
+        FROM Movie
+        INNER JOIN Rating USING(mID)
+        WHERE year < 1980
+        GROUP BY mID
+    ) AS T1
+) AS TT1,
+(
+    SELECT AVG(starsAfter1980) as avgAfter FROM
+    (
+        SELECT mID, AVG(stars) as starsAfter1980
+        FROM Movie
+        INNER JOIN Rating USING(mID)
+        WHERE year > 1980
+        GROUP BY mID
+    ) AS T2
+) AS TT2;
+
 -- EXTRA Q1
 -- Find the names of all reviewers who rated Gone with the Wind.
 SELECT name FROM Reviewer
