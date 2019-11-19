@@ -23,11 +23,11 @@
     <tbody>
       <% books.forEach(book => { _%>
         <tr>
-          <td><%= book.book_name %></td>
-          <td><%= book.aut_name %></td>
-          <td><%= book.cate_descrip %></td>
-          <td><%= book.pub_name %></td>
-          <td><%= book.book_price %></td>
+          <td><%= book.title %></td>
+          <td><%= book.author %></td>
+          <td><%= book.category %></td>
+          <td><%= book.publisher %></td>
+          <td><%= book.price %></td>
         </tr>
       <% }) _%>
     </tbody>
