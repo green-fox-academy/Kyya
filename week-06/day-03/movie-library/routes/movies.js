@@ -51,9 +51,10 @@ module.exports = {
     }
     if (req.params.length > 1) {
       const [ , movieId ] = req.params;
-      const [ exists, movie ] = isAvailable(movieId);
+      const [ exists ] = isAvailable(movieId);
       if (exists) {
-        res.send({ status: 'ok', movie });
+        res.statusCode = 204;
+        res.end();
         return;
       } else {
         res.statusCode = 404;
