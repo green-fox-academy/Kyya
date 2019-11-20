@@ -85,11 +85,15 @@ module.exports = {
           res.send({ status: 400, message: 'Bad Request' });
         }
         res.send({ id, name, genre });
+        return;
       } catch (error) {
         res.statusCode = 500;
         res.end();
         throw new Error('Unable to parse JSON');
       }
+    } else {
+      res.statusCode = 405;
+      res.send({ status: 405, message: 'Method Not Allowed'});
     }
   },
 }

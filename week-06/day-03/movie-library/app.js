@@ -26,7 +26,7 @@ const requestHandler = (req, res) => {
       break;
     default:
       res.statusCode = 404;
-      res.end('Not Found');
+      res.send({ status: 404, message: 'Not Found' });
   }
 };
 
