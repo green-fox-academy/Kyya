@@ -22,13 +22,12 @@ function MessageList() {
     return 'Loading...';
   }
 
-  if (error) {
-    return error;
-  }
-
   return (
     <div className="message-list">
-      {data.map(item => <Message key={item.id} {...item}/>)}
+      { error
+          ? <Message user="System" text={error} />
+          : data.map(item => <Message key={item.id} {...item}/>)
+      }
       <div className="message-list-end" ref={messageEnd}></div>
     </div>
   )
