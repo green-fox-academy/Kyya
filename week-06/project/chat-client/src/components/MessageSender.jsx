@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { sendMessage, sendMessageLocal, reloadMessage } from '../redux/actionCreator';
+import { sendMessage, reloadMessage } from '../redux/actionCreator';
 
 function MessageSender() {
   const dispatch = useDispatch();
@@ -23,6 +23,9 @@ function MessageSender() {
   return (
     <div className="message-sender">
       <div className="toolbar">
+        <button className="button circle">
+          <i className="fa fa-smile-o" />
+        </button>
         <button className="button circle" onClick={() => dispatch(reloadMessage())}>
           <i className="fa fa-refresh"/>
         </button>
@@ -35,7 +38,6 @@ function MessageSender() {
       </div>
       <textarea value={text} onChange={(ev) => setText(ev.target.value)} onKeyDown={handleKeyDown}/>
       <div className="toolbar-bottom">
-        <button className="button" onClick={() => dispatch(sendMessageLocal(text))}>Send Local</button>
         <button className="button" onClick={handleMessageSending}>Send</button>
       </div>
     </div>

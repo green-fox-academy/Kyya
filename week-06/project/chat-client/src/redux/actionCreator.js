@@ -20,10 +20,6 @@ export function receiveMessage(messages) {
   return { type: RECEIVE_MESSAGE, payload: messages };
 }
 
-export function fetchMessageFailure(error) {
-  return { type: FETCH_MESSAGE_FAILURE, payload: error.message };
-}
-
 export function fetchMessage() {
   return (dispatch) => {
     dispatch(getMessage());
@@ -35,7 +31,7 @@ export function fetchMessage() {
         return response.json();
       })
       .then(response => dispatch(receiveMessage(response.messages.sort((a, b) => (a.id - b.id)))))
-      .catch(error => fetchMessageFailure(error));
+      .catch(error => dispatch({ type: FETCH_MESSAGE_FAILURE, payload: error.message }));
   }
 }
 

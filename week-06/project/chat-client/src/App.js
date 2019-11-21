@@ -14,7 +14,9 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Sidebar />
-        <RoomList/>
+        <div className="rooms">
+          <RoomList/>
+        </div>
         <main>
           <MessageRoom />
           <MessageList />
