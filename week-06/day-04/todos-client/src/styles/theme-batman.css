@@ -1,0 +1,41 @@
+body.theme-batman {
+  background-color: #000;
+}
+.theme-batman .container {
+  background-color: #ffe900;
+}
+.theme-batman .heading,
+.theme-batman .todo-item,
+.theme-batman .heading,
+.theme-batman .todo-inputer input,
+.theme-batman .link-text {
+  color: #a69f00;
+}
+.theme-batman .todo-item.completed {
+  color: #c8bd58;
+}
+.theme-batman .todo-inputer {
+  background-color: #ffffff;
+  border: 2px solid #807f00;
+  box-shadow: inset 0 0 5px #807f00;
+}
+.theme-batman .todo-inputer button {
+  color: #333;
+  background-color: #ffffff;
+  box-shadow: -2px 0 3px #807f00;
+}
+
+.theme-batman .icon-remove {
+  fill: #7f7e00;
+}
+
+.theme-batman .icon-check path:first-child {
+  fill: #ffffff;
+}
+.theme-batman .icon-check path:last-child {
+  fill: #ffe900;
+}
+
+.theme-batman .icon-check-outline {
+  fill: #7f7e00;
+}

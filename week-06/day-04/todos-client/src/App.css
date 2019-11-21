@@ -1,0 +1,142 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+ul, ol, li {
+  list-style: none;
+}
+html {
+  font-size: 16px;
+  height: 100%;
+}
+body {
+  background-color: #50e3c2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+main {
+  border-radius: 5px;
+  box-shadow: 1px 2px 3px rgba(0,0,0,.1);
+  background-color: #f7f7f7;
+  padding: 42px 60px;
+  transition: transform .7s ease-out;
+}
+
+main:hover {
+  transform: translateY(-10px);
+}
+
+.heading {
+  font-family: 'Lato', sans-serif;
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 60px;
+  text-align: center;
+  color: #b8b8b8;
+}
+
+.todo-inputer {
+  border: 2px solid rgba(0, 0, 0, .2);
+  border-radius: 5px;
+  height: 60px;
+  box-shadow: inset 0 0 5px #B8B8B8;
+  display: flex;
+  margin-bottom: 24px;
+} 
+.todo-inputer input {
+  color: #B8B8B8;
+  padding: 0 8px;
+  background-color: transparent;
+  font-size: 2.5rem;
+  max-width: 320px;
+  height: 100%;
+  outline: none;
+  border: none;
+  flex: 1;
+}
+
+.theme-text {
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 2rem;
+  color: #b8b8b8;
+  cursor: pointer;
+}
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Lato', sans-serif;
+  font-size: 2rem;
+  line-height: 2.2;
+  color: #b8b8b8;
+}
+
+.button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  padding: 8px 12px;
+  font-weight: bold;
+  background-color: #df69e8;
+}
+
+.button-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 26px;
+  color: #ffffff;
+}
+.link-text {
+  margin-top: 2rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #b6b6b6;
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+.theme-text,
+.link-text {
+  transition: color .2s ease;
+}
+.theme-text:hover,
+.link-text:hover {
+  color: #58a9ba;
+}
+.icon {
+  cursor: pointer;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-size: contain;
+}
+
+.item-actions .icon {
+  transition: transform .2s ease;
+}
+.item-actions .icon:hover {
+  transform: scale(1.1);
+}
+.item-actions .icon + .icon {
+  margin-left: 8px;
+}
+
+.icon-remove {
+  fill: #b8b8b8;
+}
+
+.icon-check {
+  fill: #df69e8;
+}
+.icon-check path:last-child {
+  fill: #fff;
+}
+.icon-check-outline {
+  fill: #b8b8b8;
+}
