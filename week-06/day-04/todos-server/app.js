@@ -9,7 +9,16 @@ router.delete('/todos/:id', todos.deleteTodo);
 router.put('/todos/:id', todos.updateTodo);
 
 app.use(express.json());
+app.get('/', (req, res) => {
+  res.send({
+    message: 'Welcome to API server',
+    redirect: '/api/v1',
+    resources: [
+      'todos'
+    ]
+  })
+})
 app.use('/api/v1', router);
 
-const PORT = 3000;
-app.listen(PORT, 'localhost', () => console.log(`App listening on ${PORT}`));
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, '0.0.0.0', () => console.log(`App listening on ${PORT}`));

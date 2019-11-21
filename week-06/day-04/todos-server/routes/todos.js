@@ -14,8 +14,11 @@ module.exports = {
     }
     try {
       const queryString = format('INSERT INTO todo(text, done) VALUES(?, ?);', [text, done]);
-      const [{ affectedRows }] = await conn.query(queryString);
-      res.sendStatus(affectedRows ? 201 : 422);
+      const [{ affectedRows, insertId }] = await conn.query(queryString);
+      res.status(affectedRows ? 201 : 422);
+      if (affectedRows) {
+        res.send({ id: insertId, text, done })
+      }
     } catch (err) {
       res.sendStatus(500);
       throw new Error(err.message);
@@ -35,15 +38,17 @@ module.exports = {
   updateTodo: async (req, res) => {
     const { id } = req.params;
     const { text, done } = req.body;
-    if (!text || !done) {
+    if (text === undefined || done === undefined) {
       res.sendStatus(400);
       return;
     }
     try {
       const queryString = format('UPDATE todo SET ? WHERE ?', [{ text, done }, { id: parseInt(id) }]);
-      console.log(queryString);
       const [{ affectedRows }] = await conn.query(queryString);
-      res.sendStatus(affectedRows ? 200 : 404);
+      res.status(affectedRows ? 200 : 404);
+      if (affectedRows) {
+        res.send({ id: parseInt(id), text, done });
+      }
     } catch (err) {
       res.sendStatus(500);
       throw new Error(err.message);
