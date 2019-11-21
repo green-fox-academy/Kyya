@@ -7,7 +7,7 @@ module.exports = {
     res.send({ todos });
   },
   addTodo: async (req, res) => {
-    const { text, done } = req.body;
+    const { text, done = false } = req.body;
     if (!text) {
       res.sendStatus(400);
       return;
@@ -35,8 +35,12 @@ module.exports = {
   updateTodo: async (req, res) => {
     const { id } = req.params;
     const { text, done } = req.body;
+    if (!text || !done) {
+      res.sendStatus(400);
+      return;
+    }
     try {
-      const queryString = format('UPDATE todo SET ? WHERE ?', [{ text, done }, { id }]);
+      const queryString = format('UPDATE todo SET ? WHERE ?', [{ text, done }, { id: parseInt(id) }]);
       console.log(queryString);
       const [{ affectedRows }] = await conn.query(queryString);
       res.sendStatus(affectedRows ? 200 : 404);
