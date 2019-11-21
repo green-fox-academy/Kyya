@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const todos = require('./routes/todos');
+const cors = require('cors');
 
 const router = express.Router();
 router.get('/todos', todos.getTodo);
@@ -8,6 +9,7 @@ router.post('/todos', todos.addTodo);
 router.delete('/todos/:id', todos.deleteTodo);
 router.put('/todos/:id', todos.updateTodo);
 
+app.use(cors());
 app.use(express.json());
 app.get('/', (req, res) => {
   res.send({
