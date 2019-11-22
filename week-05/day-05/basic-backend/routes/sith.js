@@ -1,14 +1,7 @@
-const express = require('express');
-
-const app = express();
-const PORT = 8080;
-
-app.use(express.json());
-
 const things = ['Arrgh.', 'Uhmm.', 'Err..err.err.', 'Hmmm.'];
 
 function getRandomThings() {
-  return [...Array(Math.floor(Math.random() * 2 + 1))]
+  return [...Array(Math.ceil(Math.random() * 2))]
     .map(() => things[Math.floor(Math.random() * things.length)]).join(' ');
 }
 
@@ -30,15 +23,11 @@ function converter(text) {
     .join(' ');
 }
 
-app.post('/sith', (req, res) => {
+module.exports = (req, res) => {
   const { text } = req.body;
   if (text) {
     res.send({ 'sith_text': converter(text) });
   } else {
     res.send({ error: 'Feed me some text you have to, padawan young you are. Hmmm.' });
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`The server is up and running on ${PORT}`);
-});
+};

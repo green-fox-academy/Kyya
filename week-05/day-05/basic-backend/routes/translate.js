@@ -6,13 +6,9 @@ module.exports = (req, res) => {
     return;
   }
 
-  let translated = '';
-  for (let i = 0; i < text.length; i++) {
-    if ('aeiou'.includes(text[i])) {
-      translated += `${text[i]}l`;
-    }
-    translated += text[i];
-  }
+  const translated = text.split('')
+    .map(char => 'aeiou'.includes(char) ? `${char}l${char}` : char)
+    .join('');
 
   res.send({
     lang: 'gibberish',

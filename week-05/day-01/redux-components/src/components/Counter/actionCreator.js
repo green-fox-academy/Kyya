@@ -3,7 +3,6 @@ export const DECREASE = 'DECREASE';
 export const RESET = 'RESET';
 export const SET = 'SET';
 
-
 export function increaseCounter() {
   return { type: INCREASE };
 }
