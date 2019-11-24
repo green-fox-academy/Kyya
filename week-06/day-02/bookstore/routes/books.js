@@ -1,4 +1,4 @@
-const conn = require('../connection').promise();
+const conn = require('../db').promise();
 
 const mapOfQuery = {
   category: 'cate_descrip = ?',
@@ -30,7 +30,6 @@ function getQueryString(query) {
     const conditions = keysOfQuery.map(item => mapOfQuery[item]);
     return `${baseSQL} WHERE ${conditions.join(' AND ')};`;
   }
-
   return `${baseSQL};`;
 }
 
@@ -47,7 +46,6 @@ module.exports = {
   getBooks: async (req, res) => {
     const query = getAuthQuery(req.query);
     const queryString = getQueryString(query);
-
     try {
       const [ books ] = await conn.query(queryString, Object.values(query));
       res.render('book_table', { books });
