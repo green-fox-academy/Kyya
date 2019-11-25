@@ -1,8 +1,10 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const { users, posts, topics } = require('./routes');
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/static', express.static('static'));
