@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS Comments(
+  cid SERIAL,
+  pid SERIAL,
+  FOREIGN KEY(pid) REFERENCES Posts(pid),
+  PRIMARY KEY(cid)
+);
