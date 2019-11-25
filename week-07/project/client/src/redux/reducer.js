@@ -5,7 +5,7 @@ export function posts(state = [], action) {
     case CREATE_POST:
       return state;
     case FETCH_POST_SUCCESS:
-      return [...state, ...action.payload];
+      return [...state, ...action.payload.posts];
     default:
       return state;
   }

@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS Votes(
+  id SERIAL,
+  uid BIGINT UNSIGNED,
+  pid BIGINT UNSIGNED,
+  type tinyint(1) NOT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY(uid) REFERENCES Users(id),
+  FOREIGN KEY(pid) REFERENCES Posts(id)
+);

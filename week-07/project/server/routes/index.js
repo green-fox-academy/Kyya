@@ -1,9 +1,9 @@
 const posts = require('./posts');
-const topics = require('./topics');
 const users = require('./users');
+const votes =require('./votes');
 
 module.exports = {
   users,
-  topics,
-  posts
+  posts,
+  votes
 }
