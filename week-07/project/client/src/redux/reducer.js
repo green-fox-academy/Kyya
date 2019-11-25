@@ -1,11 +1,20 @@
-import { CREATE_POST, FETCH_POST_SUCCESS } from './actionCreator';
+import { CREATE_POST_SUCCESS, FETCH_POST_SUCCESS, SEND_VOTE_SUCCESS } from './actionCreator';
 
 export function posts(state = [], action) {
   switch (action.type) {
-    case CREATE_POST:
-      return state;
+    case CREATE_POST_SUCCESS:
+      return [ ...state, action.payload];
     case FETCH_POST_SUCCESS:
-      return [...state, ...action.payload.posts];
+      return [...action.payload.posts];
+    case SEND_VOTE_SUCCESS:
+      return [
+        ...state.map(item => {
+          if (item.id === action.payload.id) {
+            return action.payload;
+          }
+          return item;
+        })
+      ]
     default:
       return state;
   }

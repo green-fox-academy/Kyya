@@ -4,10 +4,66 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: #eeeeee;
+}
+
 a {
   text-decoration: none;
 }
 
 ul, ol, li {
   list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr, th, td {
+  border: 1px solid #000;
+}
+
+th, td {
+  padding: 5px;
+}
+
+.post-list {
+  padding: 1rem;
+}
+
+.post-list .post {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.post-list .post + .post {
+  border-top: 1px solid rgba(0,0,0,.08);
+}
+
+.post .post-vote {
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(0,0,0,.08);
+}
+
+.post .post-vote span {
+  text-align: center;
+}
+
+.post .post-content {
+  padding-left: 10px;
+}
+
+.post-creator {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
 }
