@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/static', express.static('static'));
 
 app.get('/', (req, res) => {
-  res.render('index', { title: 'My App', message: 'Hello, World!' });
+  res.send({ title: 'My App', message: 'Hello, World!' });
 });
 
 app.use('/users', users);

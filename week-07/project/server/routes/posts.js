@@ -33,20 +33,14 @@ async function getPosts(req, res) {
   }
 }
 
-function createVote(type) {
+function createVote(score) {
   return async function(req, res) {
     const { id } = req.params;
     const { uid } = req.body;
     try {
-      const queryString = format(`INSERT INTO Votes SET ?;
-      SELECT Posts.* FROM Posts
-      INNER JOIN Votes ON(Votes.pid = Posts.id)
-      WHERE Votes.id = LAST_INSERT_ID();`, { uid: parseInt(uid), pid: parseInt(id), type });
-      const [[{ affectedRows }, [ post ]]] = await conn.query(queryString);
-      if (affectedRows) {
-        return res.status(201).send(post);
-      }
-      res.sendStatus(422);
+      const queryString = format(`CALL CreateVote(?, ?, ?);`, [ parseInt(uid), parseInt(id), score ]);
+      const [[[ post ]]] = await conn.query(queryString);
+      res.status(201).send(post);
     } catch (error) {
       if (error.code === 'ER_DUP_ENTRY') {
         return res.status(422).send({
