@@ -10,7 +10,7 @@ export function fetchPost() {
     dispatch({ type: FETCH_POST_STARTED });
     fetch(`${API_URL}/posts`)
       .then(response => {
-        if (response.statusCode === 200) {
+        if (response.status === 200) {
           return response.json();
         }
         throw new Error('Unexpected status code: ' + response.statusCode);

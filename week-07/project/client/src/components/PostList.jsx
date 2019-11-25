@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchPost } from '../redux/actionCreator';
+import Post from './Post';
 
 function PostList() {
+  const dispatch = useDispatch();
+  const posts = useSelector(state => state.posts);
+
+  useEffect(() => {
+    dispatch(fetchPost());
+  }, [dispatch]);
+
   return (
     <div className="post-list">
       <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
+        {posts.map(post => <li key={post.id}><Post {...post}/></li>)}
       </ul>
     </div>
   )
