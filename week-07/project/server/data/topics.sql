@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS Topics(
-  tid SERIAL,
-  title VARCHAR(32) NOT NULL,
-  PRIMARY KEY(tid)
-);

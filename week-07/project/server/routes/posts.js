@@ -35,18 +35,17 @@ async function getPosts(req, res) {
 
 function createVote(score) {
   return async function(req, res) {
-    const { id } = req.params;
-    const { uid } = req.body;
+    const pid = parseInt(req.params.id);
+    const uid = parseInt(req.body.uid);
     try {
-      const queryString = format(`CALL CreateVote(?, ?, ?);`, [ parseInt(uid), parseInt(id), score ]);
-      const [[[ post ]]] = await conn.query(queryString);
-      res.status(201).send(post);
+      const queryString = format(`INSERT INTO Votes(pid, uid, score)
+      VALUES(?, ?, ?) ON DUPLICATE KEY UPDATE score = score + ?;
+      SELECT Posts.* FROM Posts INNER JOIN Votes
+      ON(Votes.pid = Posts.id)
+      WHERE Posts.id = ? AND Votes.uid = ?`, [ pid, uid, score, score, pid, uid ]);
+      const [[,[ post ]]] = await conn.query(queryString);
+      res.send(post);
     } catch (error) {
-      if (error.code === 'ER_DUP_ENTRY') {
-        return res.status(422).send({
-          message: 'You have voted this post.'
-        });
-      }
       console.error(error);
       res.sendStatus(500);
     }
