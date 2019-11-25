@@ -3,7 +3,8 @@ CREATE TABLE IF NOT EXISTS Votes(
   uid BIGINT UNSIGNED,
   pid BIGINT UNSIGNED,
   type tinyint(1) NOT NULL,
-  PRIMARY KEY(id),
+  INDEX(id),
+  PRIMARY KEY(uid, pid),
   FOREIGN KEY(uid) REFERENCES Users(id),
   FOREIGN KEY(pid) REFERENCES Posts(id)
 );

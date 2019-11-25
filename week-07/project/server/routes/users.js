@@ -9,7 +9,8 @@ async function createUser(req, res) {
     return res.sendStatus(400);
   }
   try {
-    const queryString = format('INSERT INTO Users SET ?; SELECT * FROM Users WHERE id = LAST_INSERT_ID();', { name, email });
+    const queryString = format(`INSERT INTO Users SET ?;
+    SELECT * FROM Users WHERE id = LAST_INSERT_ID();`, { name, email });
     const [[{ affectedRows }, [ user ]]] = await conn.query(queryString);
     if (affectedRows) {
       return res.status(201).send(user);
@@ -26,11 +27,18 @@ async function createUser(req, res) {
   }
 }
 
-function getUser(req, res) {
-  res.sendStatus(200);
+async function getUsers(req, res) {
+  try {
+    const queryString = 'SELECT * FROM Users;'
+    const [ users = [] ] = await conn.query(queryString);
+    res.send({ users });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
 }
 
-router.get('/', getUser);
+router.get('/', getUsers);
 router.post('/', createUser);
 
 module.exports = router;

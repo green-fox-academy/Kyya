@@ -38,10 +38,13 @@ function createVote(type) {
     const { id } = req.params;
     const { uid } = req.body;
     try {
-      const queryString = format('INSERT INTO Votes SET ?;', { uid: parseInt(uid), pid: parseInt(id), type });
-      const [{ affectedRows }] = await conn.query(queryString);
+      const queryString = format(`INSERT INTO Votes SET ?;
+      SELECT Posts.* FROM Posts
+      INNER JOIN Votes ON(Votes.pid = Posts.id)
+      WHERE Votes.id = LAST_INSERT_ID();`, { uid: parseInt(uid), pid: parseInt(id), type });
+      const [[{ affectedRows }, [ post ]]] = await conn.query(queryString);
       if (affectedRows) {
-        return res.sendStatus(201);
+        return res.status(201).send(post);
       }
       res.sendStatus(422);
     } catch (error) {
