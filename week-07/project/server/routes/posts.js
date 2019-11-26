@@ -23,9 +23,17 @@ async function createPost(req, res) {
 }
 
 async function getPosts(req, res) {
+  const id = parseInt(req.params.id);
+
   try {
-    const queryString = 'SELECT * FROM Posts;'
+    let queryString = 'SELECT * FROM Posts;';
+    if (id) {
+      queryString = format('SELECT * FROM Posts WHERE id = ? LIMIT 1;', [id]);
+    }
     const [ posts = [] ] = await conn.query(queryString);
+    if (id && posts.length > 0) {
+      return res.send(posts[0]);
+    }
     res.send({ posts });
   } catch (error) {
     console.error(error);
@@ -44,7 +52,7 @@ function createVote(score) {
       ON(Votes.pid = Posts.id)
       WHERE Posts.id = ? AND Votes.uid = ?`, [ pid, uid, score, score, pid, uid ]);
       const [[,[ post ]]] = await conn.query(queryString);
-      res.send(post);
+      res.status(201).send(post);
     } catch (error) {
       console.error(error);
       res.sendStatus(500);
@@ -52,11 +60,23 @@ function createVote(score) {
   }
 }
 
-function removePost(req, res) {
-  res.sendStatus(200);
+async function removePost(req, res) {
+  const pid = parseInt(req.params.id);
+  try {
+    const queryString = format(`DELETE FROM Votes WHERE pid = ?;
+    DELETE FROM Posts WHERE id = ?;`, [pid, pid]);
+    const [[,{ affectedRows }]] = await conn.query(queryString);
+    if (affectedRows) {
+      return res.status(200).send({ id: pid });
+    }
+    res.sendStatus(422);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
 }
 
-router.get('/', getPosts);
+router.get('/:id?', getPosts);
 router.post('/', createPost);
 router.put('/:id/upvote', createVote(1));
 router.put('/:id/downvote', createVote(-1));
