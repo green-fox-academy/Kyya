@@ -6,9 +6,9 @@ import './style.css';
 function Header() {
   const [ isLogin, setLogin ] = useLocalStorage('isLogin', false);
 
-  if (!isLogin) {
-    return <Redirect to="/login"/>
-  }
+  // if (!isLogin) {
+  //   return <Redirect to="/login"/>
+  // }
 
   return (
     <header>
@@ -19,7 +19,7 @@ function Header() {
       <div className="navigation">
       { isLogin
         ? <>
-          <a href="#">Kyya</a>
+          <Link to="/login">Kyya</Link>
           <a href="#" onClick={() => setLogin(false)}>Logout</a>
         </>
         : <Link to="/login">LOGIN</Link>

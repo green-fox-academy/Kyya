@@ -95,8 +95,12 @@ th, td {
   border-radius: 4px;
   padding-left: 40px;
   position: relative;
+  border: 1px solid transparent;
 }
 
+.post-list .post:hover {
+  border: 1px solid #000;
+}
 .post-list .post + .post {
   margin-top: 10px;
 }
@@ -176,15 +180,6 @@ th, td {
 }
 .post .post-action span + span {
   margin-left: 6px;
-}
-
-.post-creator {
-  height: 300px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border-radius: 4px;
 }
 
 button {

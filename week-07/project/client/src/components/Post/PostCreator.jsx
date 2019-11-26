@@ -8,8 +8,9 @@ function PostCreator() {
   const [url, setUrl] = useState('');
   return (
     <div className="post-creator">
-      <input placeholder="Title" value={title} onChange={(ev) => setTitle(ev.target.value)}/>
-      <input placeholder="Url" value={url} onChange={(ev) => setUrl(ev.target.value)}/>
+      <h1>Create a post</h1>
+      <input placeholder="title" value={title} onChange={(ev) => setTitle(ev.target.value)}/>
+      <input placeholder="url" value={url} onChange={(ev) => setUrl(ev.target.value)}/>
       <button onClick={() => dispatch(createPost(title, url))}>Create</button>
     </div>
   )

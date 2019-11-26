@@ -1,0 +1,34 @@
+.post-creator {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.post-creator input {
+  font-size: 1rem;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid rgba(0,0,0,.15);
+  padding: 8px 12px;
+  margin-top: .5rem;
+}
+
+.post-creator button {
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: #fff;
+  background-color: #333;
+  border-radius: 3px;
+  padding: 8px 12px;
+}
+
+.post-creator button:hover {
+  background-color: #222;
+}
+
+.post-creator h1 {
+  font-size: 1.2rem;
+  margin: .5rem 0;
+}

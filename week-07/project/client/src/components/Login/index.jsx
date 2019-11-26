@@ -43,7 +43,7 @@ function Login() {
               <input value={name} onChange={(ev) => setName(ev.target.value)}/>
               <span>{error}</span>
             </label>
-            <button class="login-button" onClick={handleLogin}>Login</button>
+            <button className="login-button" onClick={handleLogin}>Login</button>
         </>
       }
     </div>
