@@ -1,9 +1,13 @@
-import PostList from './PostList';
-import PostTable from './PostTable';
-import PostCreator from './PostCreator';
+import Post from './Post';
+import Banner from './Banner';
+import Header from './Header';
+import Sidebar from './Sidebar';
+import Login from './Login';
 
 export {
-  PostList,
-  PostTable,
-  PostCreator
+  Login,
+  Header,
+  Banner,
+  Sidebar,
+  Post
 }

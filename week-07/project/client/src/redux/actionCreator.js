@@ -12,6 +12,9 @@ export const CREATE_POST = 'CREATE_POST';
 export const CREATE_POST_SUCCESS = 'CREATE_POST_SUCCESS';
 export const CREATE_POST_FAILURE = 'CREATE_POST_FAILURE';
 
+export const REMOVE_POST_SUCCESS = 'REMOVE_POST_SUCCESS';
+export const REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
+
 export function createPost(title, url) {
   return (dispatch) => {
     fetch(`${API_URL}/posts`, {
@@ -63,4 +66,18 @@ export function sendVote(pid, score) {
   }
 }
 
-
+export function removePost(pid) {
+  return (dispatch) => {
+    fetch(`${API_URL}/posts/${pid}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.status === 200) {
+        return response.json();
+      }
+      throw new Error('Unexpected status code: ' + response.status);
+    })
+    .then(response => dispatch({ type: REMOVE_POST_SUCCESS, payload: parseInt(pid) }))
+    .catch(error => dispatch({ type: REMOVE_POST_FAILURE, payload: error.message }));
+  }
+}

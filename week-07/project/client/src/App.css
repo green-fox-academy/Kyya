@@ -1,15 +1,29 @@
 *, *::before, *::after {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 }
 
 html {
   font-size: 16px;
+  font-family: 'IBM Plex Sans', Arial, sans-serif
+}
+html, body, #root {
+  height: 100%;
 }
 
+.App {
+  padding-top: 48px;
+  height: calc(100% - 48px);
+}
 body {
-  background-color: #eeeeee;
+  background-color: #373c3f;
+  /* overflow: hidden; */
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 a {
@@ -32,38 +46,183 @@ th, td {
   padding: 5px;
 }
 
+.sidebar {
+  display: flex;
+  width: 312px;
+  padding: 20px 0;
+  padding-right: 24px;
+}
+
+.banner {
+  height: 208px;
+  position: relative;
+}
+
+.banner div {
+  width: 100%;
+  height: 100%;
+  background: #999 url(./assets/space.jpg) no-repeat center / cover;
+  background-position: center top;
+  /* height: 192px; */
+}
+
+.banner .text {
+  background-color: transparent;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  position: absolute;
+  top: 50%;
+  width: 512px;
+
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url(./assets/text.png);
+  height: 176px;
+}
+
 .post-list {
-  padding: 1rem;
+  padding: 20px 24px;
+  width: 640px;
 }
 
 .post-list .post {
+  cursor: pointer;
+  overflow: hidden;
   display: flex;
   flex-direction: row;
-  padding: 10px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, .8);
+  border-radius: 4px;
+  padding-left: 40px;
+  position: relative;
 }
 
 .post-list .post + .post {
-  border-top: 1px solid rgba(0,0,0,.08);
+  margin-top: 10px;
 }
 
 .post .post-vote {
-  padding-right: 10px;
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid rgba(0,0,0,.08);
+  align-items: center;
+  width: 40px;
+  height: 100%;
+  left: 0;
+  padding: 8px 4px 8px 0;
+  position: absolute;
+  top: 0;
+  background-color: #d7d8d9;
 }
 
 .post .post-vote span {
   text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  pointer-events: none;
+  word-break: normal;
+  color: #1a1a1b;
 }
 
 .post .post-content {
+  padding-top: 8px;
   padding-left: 10px;
+  width: 100%;
+  background-color: #fff;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.post-content .post-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #222;
+}
+.post .post-link {
+  display: flex;
+}
+
+.post-link a {
+  font-size: 12px;
+  color: #646d73;
+  font-weight: 400;
+  line-height: 16px;
+  margin: 4px 0;
+  max-width: 125px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.post-link a:hover {
+  text-decoration: underline;
+}
+
+.post .post-action {
+  display: flex;
+  flex-direction: row;
+  padding-top: 22px;
+  padding-bottom: 8px;
+}
+.post .post-action span {
+  cursor: pointer;
+  font-size: 12px;
+  color: #646d73;
+}
+.post .post-action span:hover {
+  color: #222;
+}
+.post .post-action span + span {
+  margin-left: 6px;
 }
 
 .post-creator {
-  width: 120px;
+  height: 300px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: initial;
+}
+.vote-button {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  border-radius: 2px;
+  justify-content: center;
+}
+
+i {
+  width: 16px;
+  height: 16px;
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.vote-button:hover {
+  background-color: rgba(0,0,0,.15);
+}
+i.upvote {
+  background-image: url(./assets/upvote.png);
+}
+.vote-button:hover i.upvote {
+  background-image: url(./assets/upvoted.png);
+}
+
+i.downvote {
+  background-image: url(./assets/downvote.png);
+}
+.vote-button:hover i.downvote {
+  background-image: url(./assets/downvoted.png);
 }

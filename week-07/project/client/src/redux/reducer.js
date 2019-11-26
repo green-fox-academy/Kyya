@@ -1,4 +1,4 @@
-import { CREATE_POST_SUCCESS, FETCH_POST_SUCCESS, SEND_VOTE_SUCCESS } from './actionCreator';
+import { CREATE_POST_SUCCESS, FETCH_POST_SUCCESS, SEND_VOTE_SUCCESS, REMOVE_POST_SUCCESS } from './actionCreator';
 
 export function posts(state = [], action) {
   switch (action.type) {
@@ -14,6 +14,12 @@ export function posts(state = [], action) {
           }
           return item;
         })
+      ]
+    case REMOVE_POST_SUCCESS:
+      console.log(state);
+      console.log(action.payload);
+      return [
+        ...state.filter(item => item.id !== action.payload)
       ]
     default:
       return state;

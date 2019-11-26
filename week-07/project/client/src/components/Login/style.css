@@ -1,0 +1,43 @@
+.login {
+  width: 420px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.login h1 {
+  font-size: 1.2rem;
+  margin: .5rem 0;
+}
+
+.login input {
+  font-size: 1rem;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid rgba(0,0,0,.15);
+  padding: 8px 12px;
+  margin-top: .5rem;
+}
+
+.login label {
+  display: flex;
+  flex-direction: column;
+}
+.login label span {
+  color: red;
+}
+
+.login-button {
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: #fff;
+  background-color: #333;
+  border-radius: 3px;
+  padding: 8px 12px;
+}
+.login-button:hover {
+  background-color: #222;
+}
