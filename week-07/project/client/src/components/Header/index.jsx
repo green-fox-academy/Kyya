@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useLocalStorage } from '../../hooks';
 import './style.css';
 
@@ -20,7 +20,7 @@ function Header() {
       { isLogin
         ? <>
           <Link to="/login">Kyya</Link>
-          <a href="#" onClick={() => setLogin(false)}>Logout</a>
+          <a href="/" onClick={() => setLogin(false)}>Logout</a>
         </>
         : <Link to="/login">LOGIN</Link>
       }

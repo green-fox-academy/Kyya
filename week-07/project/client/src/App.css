@@ -49,6 +49,7 @@ th, td {
 .sidebar {
   display: flex;
   width: 312px;
+  height: fit-content;
   padding: 20px 0;
   padding-right: 24px;
 }
@@ -101,6 +102,7 @@ th, td {
 .post-list .post:hover {
   border: 1px solid #000;
 }
+
 .post-list .post + .post {
   margin-top: 10px;
 }

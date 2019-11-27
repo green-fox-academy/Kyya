@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { API_URL } from '../../config';
 
-function PostDetail(props) {
+function PostDetail() {
   const [ post, setPost ] = useState(null);
-  const { id } = props.match.params;
+  const { id } = useParams();
 
   useEffect(() => {
     fetch(`${API_URL}/posts/${id}`)
       .then(response => response.json())
-      .then(response => {
-        setPost(response);
-      })
+      .then(response => setPost(response))
   }, [id]);
 
   if (!post) {

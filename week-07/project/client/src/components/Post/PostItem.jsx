@@ -1,9 +1,18 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { sendVote, removePost } from '../../redux/actionCreator';
 
 function PostItem(props) {
+  const history = useHistory();
   const dispatch = useDispatch();
+
+  function handleClick(ev) {
+    if (ev.target.tagName === 'DIV') {
+      history.push(`/posts/${props.id}`);
+    }
+  }
+
   return (
     <div className="post">
       <div className="post-vote">
@@ -11,7 +20,7 @@ function PostItem(props) {
         <span>{props.score}</span>
         <button className="vote-button" onClick={() => dispatch(sendVote(props.id, 'downvote'))}><i className="downvote"/></button>
       </div>
-      <div className="post-content">
+      <div className="post-content" onClick={handleClick}>
         <div className="post-title">
           {props.title}
         </div>
