@@ -1,3 +1,111 @@
+.post-list {
+  padding: 20px 24px;
+  width: 640px;
+}
+/* PostItem */
+.post-list .post {
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, .8);
+  border-radius: 4px;
+  padding-left: 40px;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.post-list .post:hover {
+  border: 1px solid #000;
+}
+
+.post-list .post + .post {
+  margin-top: 10px;
+}
+
+.post .post-vote {
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  height: 100%;
+  left: 0;
+  padding: 8px 4px 8px 0;
+  position: absolute;
+  top: 0;
+  background-color: #d7d8d9;
+}
+
+.post-vote span {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  pointer-events: none;
+  word-break: normal;
+  color: #1a1a1b;
+}
+
+.post .post-content {
+  padding-top: 8px;
+  padding-left: 10px;
+  width: 100%;
+  background-color: #fff;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.post-content .post-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #222;
+}
+
+.post .post-link {
+  display: flex;
+}
+
+.post-link a {
+  font-size: 12px;
+  color: #646d73;
+  font-weight: 400;
+  line-height: 16px;
+  margin: 4px 0;
+  max-width: 125px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.post-link a:hover {
+  text-decoration: underline;
+}
+
+.post-action {
+  display: flex;
+  flex-direction: row;
+  padding-top: 22px;
+  padding-bottom: 8px;
+}
+
+.post-action span {
+  cursor: pointer;
+  font-size: 12px;
+  color: #646d73;
+}
+
+.post-action span:hover {
+  color: #222;
+}
+
+.post-action span + span {
+  margin-left: 6px;
+}
+
+/* PostCreator */
 .post-creator {
   padding: 1rem;
   display: flex;
@@ -32,3 +140,107 @@
   font-size: 1.2rem;
   margin: .5rem 0;
 }
+
+/* PostDetail */
+.post-detail {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 1rem;
+  width: 1000px;
+  min-height: 60px;
+  padding-left: 40px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.post-detail .post-title {
+  margin: 1rem 0;
+  font-weight: bold;
+  font-size: 18px;
+  color: #222;
+}
+
+.post-detail .post-vote {
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  height: 100%;
+  left: 0;
+  padding: 8px 4px 8px 0;
+  position: absolute;
+  top: 0;
+  background-color: #fff;
+}
+
+.post-detail {
+  padding-right: 40px;
+  padding-bottom: 20px;
+}
+
+.post-detail .post-action span {
+  display: flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-weight: bold;
+}
+.post-detail .post-action span:hover {
+  background-color: rgba(0,0,0,.15);
+}
+
+.post-comment {
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  position: relative;
+  border: 1px solid rgba(0,0,0,.12);
+}
+
+.post-comment:focus-within {
+  border: 1px solid #222;
+}
+
+.post-comment textarea {
+  flex: 1;
+  resize: none;
+  padding: 8px 16px;
+  border-radius: inherit;
+  font-family: 'IBM Plex Sans', sans-serif;
+  height: 138px;
+}
+
+.post-comment .post-toolbar {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  position: absolute;
+  height: 36px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #f6f7f8;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post-toolbar button {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-align: center;
+  border-radius: 4px;
+  margin: 4px 8px;
+  min-height: 27px;
+  min-width: 96px;
+  padding: 5px 10px;
+  background-color: #646d73;
+  border-color: #646d73;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+
