@@ -28,9 +28,19 @@ async function createUser(req, res) {
 }
 
 async function getUsers(req, res) {
+  const uid = parseInt(req.params.id);
   try {
-    const queryString = 'SELECT * FROM Users;'
+    let queryString = 'SELECT * FROM Users;';
+    if (uid) {
+      queryString = format('SELECT * FROM Users WHERE id = ?', [uid]);
+    }
     const [ users = [] ] = await conn.query(queryString);
+    if (users.length === 0) {
+      return res.sendStatus(404);
+    }
+    if (uid) {
+      return res.send(users[0]);
+    }
     res.send({ users });
   } catch (error) {
     console.error(error);
@@ -38,7 +48,20 @@ async function getUsers(req, res) {
   }
 }
 
-router.get('/', getUsers);
+async function getVotes(req, res) {
+  const uid = parseInt(req.params.id);
+  try {
+    const queryString = format(`SELECT * FROM Votes WHERE uid = ?;`, [uid]);
+    const [ votes ] = await conn.query(queryString);
+    res.send(votes);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+}
+
+router.get('/:id?', getUsers);
+router.get('/:id/votes', getVotes);
 router.post('/', createUser);
 
 module.exports = router;
