@@ -189,11 +189,12 @@
   border-radius: 2px;
   font-weight: bold;
 }
+
 .post-detail .post-action span:hover {
   background-color: rgba(0,0,0,.15);
 }
 
-.post-comment {
+.post-textarea {
   width: 100%;
   border-radius: 5px;
   display: flex;
@@ -201,11 +202,11 @@
   border: 1px solid rgba(0,0,0,.12);
 }
 
-.post-comment:focus-within {
+.post-textarea:focus-within {
   border: 1px solid #222;
 }
 
-.post-comment textarea {
+.post-textarea textarea {
   flex: 1;
   resize: none;
   padding: 8px 16px;
@@ -214,7 +215,7 @@
   height: 138px;
 }
 
-.post-comment .post-toolbar {
+.post-textarea .post-toolbar {
   border-bottom-left-radius: inherit;
   border-bottom-right-radius: inherit;
   position: absolute;
@@ -243,4 +244,55 @@
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
+.post-comments {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.post-comment {
+  margin: 1rem 0;
+  padding: 2rem 0;
+  padding-left: 40px;
+  /* background-color: rgba(0,0,0,.05); */
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,.12);
+  position: relative;
+}
+
+.post-comment .comment-vote {
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+
+
+  height: 100%;
+  padding: 8px 4px 8px 0;
+  padding-right: 4px;
+  background-color: rgba(0,0,0,.05);
+  /* background-color: #fff; */
+}
+
+.comment-vote span {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  pointer-events: none;
+  word-break: normal;
+  color: #1a1a1b;
+}
+
+.post-comment .comment-content {
+  padding: 0 1rem;
+}
 

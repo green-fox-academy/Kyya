@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function PostComment() {
-  const [comment, setComment] = useState('');
+function PostComment(props) {
   return (
     <div className="post-comment">
-      <textarea value={comment} onChange={(ev) => setComment(ev.target.value)}/>
-      <div className="post-toolbar">
-        <button>COMMENT</button>
+      <div className="comment-vote">
+        <button className="vote-button" onClick={() => null}>
+          <i className="fa fa-chevron-up" />
+        </button>
+        <span>{props.score}</span>
+        <button className="vote-button" onClick={() => null}>
+          <i className="fa fa-chevron-down" />
+        </button>
+      </div>
+      <div className="comment-content">
+        {props.text}
       </div>
     </div>
   )
