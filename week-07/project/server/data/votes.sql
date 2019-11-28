@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Votes(
   INDEX(id),
   PRIMARY KEY(uid, pid),
   FOREIGN KEY(uid) REFERENCES Users(id),
-  FOREIGN KEY(pid) REFERENCES Posts(id)
+  FOREIGN KEY(pid) REFERENCES Posts(id) ON DELETE CASCADE
 );
 
 CREATE TRIGGER After_Votes_Insert

@@ -63,9 +63,8 @@ function createVote(score) {
 async function removePost(req, res) {
   const pid = parseInt(req.params.id);
   try {
-    const queryString = format(`DELETE FROM Votes WHERE pid = ?;
-    DELETE FROM Posts WHERE id = ?;`, [pid, pid]);
-    const [[,{ affectedRows }]] = await conn.query(queryString);
+    const queryString = format(`DELETE FROM Posts WHERE id = ?;`, [pid]);
+    const [{ affectedRows }] = await conn.query(queryString);
     if (affectedRows) {
       return res.status(200).send({ id: pid });
     }
@@ -76,9 +75,47 @@ async function removePost(req, res) {
   }
 }
 
+async function getComments(req, res) {
+  const pid = parseInt(req.params.id);
+  try {
+    const queryString = format('SELECT * FROM Comments WHERE pid = ?;', [pid]);
+    const [ comments = [] ] = await conn.query(queryString);
+    res.send(comments);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+}
+
+async function createComment(req, res) {
+  const pid = parseInt(req.params.id);
+  const uid = parseInt(req.body.uid);
+  const { text } = req.body;
+  const parent = null;
+  try {
+    const queryString = format(`INSERT INTO
+    Comments(pid, uid, parent, text)
+    VALUES(?, ?, ?, ?); SELECT * FROM Comments
+    WHERE id = LAST_INSERT_ID();`, [pid, uid, parent, text]);
+    const [[ { affectedRows }, [ comment ]]] = await conn.query(queryString);
+    if (affectedRows) {
+      return res.status(201).send(comment);
+    }
+    res.sendStatus(422);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+}
+
 router.get('/:id?', getPosts);
 router.post('/', createPost);
+
 router.put('/:id/upvote', createVote(1));
 router.put('/:id/downvote', createVote(-1));
+
+router.get('/:id/comments', getComments);
+router.post('/:id/comments', createComment);
 router.delete('/:id', removePost);
+
 module.exports = router;

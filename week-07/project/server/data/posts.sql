@@ -6,11 +6,3 @@ CREATE TABLE IF NOT EXISTS Posts(
   score INT DEFAULT 0,
   PRIMARY KEY(id)
 );
-
-CREATE TRIGGER Before_Posts_Delete
-  BEFORE DELETE ON Posts
-  FOR EACH ROW
-BEGIN
-  DELETE FROM Votes WHERE pid = OLD.id;
-END;
-
