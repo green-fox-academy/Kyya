@@ -51,16 +51,13 @@ function PostDetail() {
         </button>
       </div>
       <div className="post-title">{post.title}</div>
-      <div className="post-content">
-        <p>Please sort comments by 'new' to find questions that would otherwise be buried.</p>
-        <p>In this thread you can ask any space related question that you may have.</p>
-        <p>Two examples of potential questions could be; "How do rockets work?", or "How do the phases of the Moon work?"</p>
-        <p>If you see a space related question posted in another subeddit or in this subreddit, then please politely link them to this thread.</p>
-        <p>Ask away!</p>
+      <div className="post-link">
+        <a target="_blank" rel="noopener noreferrer" href={post.url}>{post.url.replace(/https?:\/\//, '')}</a>
       </div>
       <div className="post-action">
-        <span><i className="fa fa-comments"/>comments(0)</span>
-        <span onClick={() => dispatch(removePost(post.id))}>
+        <span><i className="fa fa-comments"/>comments({comments.length})</span>
+        <span className="modify"><i className="fa fa-edit"/>modify</span>
+        <span className="remove" onClick={() => dispatch(removePost(post.id))}>
           <i className="fa fa-trash"/>
           delete
         </span>

@@ -1,6 +1,6 @@
 .post-list {
   padding: 20px 24px;
-  width: 640px;
+  width: 100%;
 }
 /* PostItem */
 .post-list .post {
@@ -33,7 +33,7 @@
   width: 40px;
   height: 100%;
   left: 0;
-  padding: 8px 4px 8px 0;
+  padding: 8px 0;
   position: absolute;
   top: 0;
   background-color: #d7d8d9;
@@ -64,7 +64,7 @@
   color: #222;
 }
 
-.post .post-link {
+.post-link {
   display: flex;
 }
 
@@ -107,6 +107,8 @@
 
 /* PostCreator */
 .post-creator {
+  margin: 1rem;
+  width: 100%;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -155,7 +157,7 @@
 }
 
 .post-detail .post-title {
-  margin: 1rem 0;
+  margin-top: 1rem;
   font-weight: bold;
   font-size: 18px;
   color: #222;
@@ -182,7 +184,7 @@
   padding-bottom: 20px;
 }
 
-.post-detail .post-action span {
+.post-action span {
   display: flex;
   align-items: center;
   padding: 2px 6px;
@@ -190,8 +192,12 @@
   font-weight: bold;
 }
 
-.post-detail .post-action span:hover {
+.post-action span:hover {
   background-color: rgba(0,0,0,.15);
+}
+
+.post-action .remove:hover {
+  color: red;
 }
 
 .post-textarea {
@@ -242,6 +248,11 @@
   background-color: #646d73;
   border-color: #646d73;
   font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.post-toolbar button:hover {
+  background-color: #333;
+  border-color: #333;
 }
 
 .post-comments {

@@ -13,12 +13,22 @@ function PostItem(props) {
     }
   }
 
+  function handleRemove() {
+    if (window.confirm("Are you confirm?")) {
+      dispatch(removePost(props.id));
+    }
+  }
+
   return (
     <div className="post">
       <div className="post-vote">
-        <button className="vote-button" onClick={() => dispatch(sendVote(props.id, 'upvote'))}><i className="upvote"/></button>
+        <button className="vote-button" onClick={() => dispatch(sendVote(props.id, 'upvote'))}>
+          <i className="fa fa-chevron-up"/>
+        </button>
         <span>{props.score}</span>
-        <button className="vote-button" onClick={() => dispatch(sendVote(props.id, 'downvote'))}><i className="downvote"/></button>
+        <button className="vote-button" onClick={() => dispatch(sendVote(props.id, 'downvote'))}>
+          <i className="fa fa-chevron-down"/>
+        </button>
       </div>
       <div className="post-content" onClick={handleClick}>
         <div className="post-title">
@@ -28,9 +38,13 @@ function PostItem(props) {
           <a target="_blank" rel="noopener noreferrer" href={props.url}>{props.url.replace(/https?:\/\//, '')}</a>
         </div>
         <div className="post-action">
-          <span>comments(0)</span>
-          <span onClick={() => dispatch(removePost(props.id))}>delete</span>
+          <span><i className="fa fa-comments"/>comments(0)</span>
+          <span className="remove" onClick={handleRemove}>
+            <i className="fa fa-trash"/>
+            delete
+          </span>
         </div>
+        
       </div>
     </div>
   )

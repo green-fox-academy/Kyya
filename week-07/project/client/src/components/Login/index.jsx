@@ -41,7 +41,7 @@ function Login() {
             <label>
               Please provide your name: 
               <input value={name} onChange={(ev) => setName(ev.target.value)}/>
-              <span>{error}</span>
+              <p className="error">{error}</p>
             </label>
             <button className="login-button" onClick={handleLogin}>Login</button>
         </>

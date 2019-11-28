@@ -4,17 +4,12 @@ import { useLocalStorage } from './hooks';
 import { Login, Header, Banner, Post, Sidebar } from './components';
 import './App.css';
 
-const Home = () => {
+function CheckLogin() {
   const [ isLogin ] = useLocalStorage('isLogin', false);
   if (!isLogin) {
     return <Redirect to="/login"/>
   }
-  return (
-    <>
-      <Post.PostList/>
-      <Sidebar/>
-    </>
-  )
+  return '';
 }
 
 function App() {
@@ -23,9 +18,11 @@ function App() {
       <Header/>
       <Banner/>
       <main>
+        <Route component={CheckLogin}/>
         <Switch>
-          <Route exact path="/" component={Home}/>
+          <Route exact path="/" component={Post.PostList}/>
           <Route path="/login" component={Login}/>
+          <Route path="/posts/create" component={Post.PostCreator}/>
           <Route path="/posts/:id" component={Post.PostDetail}/>
           <Route render={() => <h1>404</h1>}/>
         </Switch>
