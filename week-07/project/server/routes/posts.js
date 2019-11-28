@@ -1,4 +1,5 @@
 const conn = require('../db').promise();
+const jwt = require('jsonwebtoken');
 const { format } = require('mysql2');
 const { Router } = require('express');
 const router = Router();
@@ -24,9 +25,6 @@ async function createPost(req, res) {
 
 async function getPosts(req, res) {
   const pid = parseInt(req.params.id);
-  if (Number.isNaN(pid)) {
-    return res.sendStatus(400);
-  }
   try {
     let queryString = 'SELECT * FROM Posts;';
     if (pid) {
@@ -63,15 +61,25 @@ function createVote(score) {
 }
 
 async function removePost(req, res) {
-  const pid = parseInt(req.params.id);
+  if (!req.token || req.token === '') {
+    return res.sendStatus(403);
+  }
+  // const pid = parseInt(req.params.id);
   try {
-    const queryString = format(`DELETE FROM Posts WHERE id = ?;`, [pid]);
-    const [{ affectedRows }] = await conn.query(queryString);
-    if (affectedRows) {
-      return res.status(200).send({ id: pid });
-    }
-    res.sendStatus(422);
+    const { iat, user } = await jwt.verify(req.token, process.env.JWT_PRIVATE_KEY);
+    // const { uid } = result.user;
+    console.log('action uid is: ', user.id);
+    return res.send('ok');
+    // const queryString = format(`DELETE FROM Posts WHERE id = ?;`, [pid]);
+    // const [{ affectedRows }] = await conn.query(queryString);
+    // if (affectedRows) {
+    //   return res.status(200).send({ id: pid });
+    // }
+    // res.sendStatus(422);
   } catch (error) {
+    if (error.name === 'JsonWebTokenError') {
+      return res.sendStatus(403);
+    }
     console.error(error);
     res.sendStatus(500);
   }
@@ -110,7 +118,28 @@ async function createComment(req, res) {
   }
 }
 
+async function updatePost(req, res) {
+  const pid = parseInt(req.params.id);
+  const { title, url } = req.body;
+  if (Number.isNaN(pid)) {
+    return res.sendStatus(400);
+  }
+  try {
+    const queryString = format(`UPDATE Posts SET ? WHERE id = ?;
+    SELECT * FROM Posts WHERE id = ?;`, [{title, url}, pid, pid]);
+    const [[{ affectedRows }, [post]]] = await conn.query(queryString);
+    if (affectedRows) {
+      return res.sendStatus(200).send(post);
+    }
+    res.sendStatus(422);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+}
+
 router.get('/:id?', getPosts);
+router.put('/:id', updatePost);
 router.post('/', createPost);
 
 router.put('/:id/upvote', createVote(1));

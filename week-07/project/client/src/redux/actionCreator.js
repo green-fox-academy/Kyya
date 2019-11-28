@@ -15,6 +15,11 @@ export const CREATE_POST_FAILURE = 'CREATE_POST_FAILURE';
 export const REMOVE_POST_SUCCESS = 'REMOVE_POST_SUCCESS';
 export const REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
 
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
+
+export const AUTHORIZATION_REQUIRED = 'AUTHORIZATION_REQUIRED';
+
 export function createPost(title, url) {
   return (dispatch) => {
     fetch(`${API_URL}/posts`, {
@@ -67,9 +72,14 @@ export function sendVote(pid, score) {
 }
 
 export function removePost(pid) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const { user } = getState();
+    if (!user) {
+      return dispatch({ type: AUTHORIZATION_REQUIRED });
+    }
     fetch(`${API_URL}/posts/${pid}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${user.token}`}
     })
     .then(response => {
       if (response.status === 200) {
@@ -79,5 +89,27 @@ export function removePost(pid) {
     })
     .then(response => dispatch({ type: REMOVE_POST_SUCCESS, payload: parseInt(pid) }))
     .catch(error => dispatch({ type: REMOVE_POST_FAILURE, payload: error.message }));
+  }
+}
+
+export function loginUser(username, password, history) {
+  return (dispatch) => {
+    fetch(`${API_URL}/users/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    })
+      .then(response => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        throw new Error('Unexpected status code');
+      })
+      .then(response => {
+        window.localStorage.setItem('user', JSON.stringify(response.user));
+        dispatch({ type: LOGIN_USER_SUCCESS, payload: response });
+        history.push('/');
+      })
+      .catch(error => dispatch({ type: LOGIN_USER_FAILURE, payload: error.message }));
   }
 }
