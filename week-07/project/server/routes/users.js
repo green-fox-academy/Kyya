@@ -29,6 +29,9 @@ async function createUser(req, res) {
 
 async function getUsers(req, res) {
   const uid = parseInt(req.params.id);
+  if (Number.isNaN(uid)) {
+    return res.sendStatus(400);
+  }
   try {
     let queryString = 'SELECT * FROM Users;';
     if (uid) {

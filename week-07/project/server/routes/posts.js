@@ -23,15 +23,17 @@ async function createPost(req, res) {
 }
 
 async function getPosts(req, res) {
-  const id = parseInt(req.params.id);
-
+  const pid = parseInt(req.params.id);
+  if (Number.isNaN(pid)) {
+    return res.sendStatus(400);
+  }
   try {
     let queryString = 'SELECT * FROM Posts;';
-    if (id) {
-      queryString = format('SELECT * FROM Posts WHERE id = ? LIMIT 1;', [id]);
+    if (pid) {
+      queryString = format('SELECT * FROM Posts WHERE id = ? LIMIT 1;', [pid]);
     }
     const [ posts = [] ] = await conn.query(queryString);
-    if (id && posts.length > 0) {
+    if (pid && posts.length > 0) {
       return res.send(posts[0]);
     }
     res.send({ posts });
