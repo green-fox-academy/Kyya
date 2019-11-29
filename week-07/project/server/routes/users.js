@@ -1,8 +1,8 @@
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const conn = require('../db').promise();
-const { format } = require('mysql2');
 const { Router } = require('express');
+const { format } = require('mysql2');
+const jwt = require('jsonwebtoken');
+const conn = require('../db').promise();
+const { sha256 } = require('../helper');
 const router = Router();
 
 async function createUser(req, res) {
@@ -24,8 +24,7 @@ async function createUser(req, res) {
         message: 'user has exists'
       });
     }
-    console.error(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 
@@ -48,8 +47,7 @@ async function getUsers(req, res) {
     }
     res.send({ users });
   } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 
@@ -60,8 +58,7 @@ async function getVotes(req, res) {
     const [ votes ] = await conn.query(queryString);
     res.send(votes);
   } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 
@@ -75,9 +72,7 @@ async function loginUser(req, res) {
     const [ users = [] ] = await conn.query(queryString);
     if (users.length > 0) {
       const [ user ] = users;
-      const hash = crypto.createHmac('sha256', process.env.JWT_PRIVATE_KEY)
-      .update(password)
-      .digest('hex');
+      const hash = sha256(password);
       if (user.password === hash) {
         const token = await jwt.sign({ user }, process.env.JWT_PRIVATE_KEY);
         const { id, name, email } = user;
@@ -89,17 +84,19 @@ async function loginUser(req, res) {
       return res.status(404).send({ message: 'User not exists. Please register...' });
     }
   } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 
-async function getUserDetails(req, res) {
+async function getUserDetails(req, res, next) {
+  if (!req.token) {
+    return res.sendStatus(403);
+  }
   try {
-    res.send({ token: req.token });
+    const { iat, user } = await jwt.verify(req.token, process.env.JWT_PRIVATE_KEY);
+    res.send({ token: req.token, iat: new Date(iat*1000), user });
   } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 
@@ -109,9 +106,7 @@ async function registerUser(req, res) {
     return res.sendStatus(400);
   }
   try {
-    const hash = crypto.createHmac('sha256', process.env.JWT_PRIVATE_KEY)
-      .update(password)
-      .digest('hex');
+    const hash = sha256(password);
     const queryString1 = format('SELECT * FROM Users WHERE name = ?;', [username.toLowerCase()]);
     const [ user = [] ] = await conn.query(queryString1);
     if (user.length > 0) {
@@ -126,8 +121,7 @@ async function registerUser(req, res) {
       res.sendStatus(422);
     }
   } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 

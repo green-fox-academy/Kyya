@@ -1,5 +1,5 @@
-const conn = require('../db').promise();
 const { Router } = require('express');
+const conn = require('../db').promise();
 const router = Router();
 
 async function getVotes(req, res) {
@@ -10,8 +10,7 @@ async function getVotes(req, res) {
     const [ rows ] = await conn.query(queryString);
     res.send(rows);
   } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 

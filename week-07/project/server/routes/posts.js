@@ -1,7 +1,7 @@
-const conn = require('../db').promise();
-const jwt = require('jsonwebtoken');
-const { format } = require('mysql2');
 const { Router } = require('express');
+const { format } = require('mysql2');
+const jwt = require('jsonwebtoken');
+const conn = require('../db').promise();
 const router = Router();
 
 async function createPost(req, res) {
@@ -18,8 +18,7 @@ async function createPost(req, res) {
     }
     res.sendStatus(422);
   } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 
@@ -36,8 +35,7 @@ async function getPosts(req, res) {
     }
     res.send({ posts });
   } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 
@@ -54,8 +52,7 @@ function createVote(score) {
       const [[,[ post ]]] = await conn.query(queryString);
       res.status(201).send(post);
     } catch (error) {
-      console.error(error);
-      res.sendStatus(500);
+      next(error);
     }
   }
 }
@@ -64,24 +61,20 @@ async function removePost(req, res) {
   if (!req.token || req.token === '') {
     return res.sendStatus(403);
   }
-  // const pid = parseInt(req.params.id);
+  
   try {
+    const pid = parseInt(req.params.id);
     const { iat, user } = await jwt.verify(req.token, process.env.JWT_PRIVATE_KEY);
-    // const { uid } = result.user;
+    const { uid } = user;
     console.log('action uid is: ', user.id);
-    return res.send('ok');
-    // const queryString = format(`DELETE FROM Posts WHERE id = ?;`, [pid]);
-    // const [{ affectedRows }] = await conn.query(queryString);
-    // if (affectedRows) {
-    //   return res.status(200).send({ id: pid });
-    // }
-    // res.sendStatus(422);
-  } catch (error) {
-    if (error.name === 'JsonWebTokenError') {
-      return res.sendStatus(403);
+    const queryString = format(`DELETE FROM Posts WHERE id = ?;`, [pid]);
+    const [{ affectedRows }] = await conn.query(queryString);
+    if (affectedRows) {
+      return res.status(200).send({ id: pid });
     }
-    console.error(error);
-    res.sendStatus(500);
+    res.sendStatus(422);
+  } catch (error) {
+      next(error);
   }
 }
 
@@ -92,8 +85,7 @@ async function getComments(req, res) {
     const [ comments = [] ] = await conn.query(queryString);
     res.send(comments);
   } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 
@@ -113,8 +105,7 @@ async function createComment(req, res) {
     }
     res.sendStatus(422);
   } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 
@@ -133,8 +124,7 @@ async function updatePost(req, res) {
     }
     res.sendStatus(422);
   } catch (error) {
-    console.log(error);
-    res.sendStatus(500);
+    next(error);
   }
 }
 

@@ -2,20 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const { setToken } = require('./helper');
 const { users, posts, votes } = require('./routes');
 
-const checkToken = (req, res, next) => {
-  const header = req.headers['authorization'];
-  if(typeof header !== 'undefined') {
-    const bearer = header.split(' ');
-    const token = bearer[1];
-    req.token = token;
-  }
-  next();
-}
-
 app.use(cors());
-app.use(checkToken);
+app.use(setToken());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/static', express.static('static'));
@@ -27,6 +18,14 @@ app.get('/', (req, res) => {
 app.use('/users', users);
 app.use('/posts', posts);
 app.use('/votes', votes);
+
+app.use(function(error, req, res, next) {
+  if (error.name === 'JsonWebTokenError') {
+    return res.sendStatus(403);
+  }
+  console.error(error);
+  res.sendStatus(500);
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`App listening on ${PORT}`));
