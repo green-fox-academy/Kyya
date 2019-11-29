@@ -22,7 +22,7 @@ export const AUTHORIZATION_REQUIRED = 'AUTHORIZATION_REQUIRED';
 
 export function createPost(title, url) {
   return (dispatch) => {
-    fetch(`${API_URL}/posts`, {
+    return fetch(`${API_URL}/posts`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, url })

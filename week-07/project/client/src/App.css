@@ -111,7 +111,9 @@ th, td {
 }
 .banner .navigation nav a {
   height: inherit;
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .banner .navigation nav a {
   cursor: pointer;
@@ -181,16 +183,19 @@ i {
 .vote-button:hover {
   background-color: rgba(0,0,0,.15);
 }
-i.upvote {
-  background-image: url(./assets/upvote.png);
-}
-.vote-button:hover i.upvote {
-  background-image: url(./assets/upvoted.png);
+
+
+.card {
+  background-color: #fff;
+  border-radius: 4px;
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
-i.downvote {
-  background-image: url(./assets/downvote.png);
-}
-.vote-button:hover i.downvote {
-  background-image: url(./assets/downvoted.png);
+.not-found {
+  font-size: 1.2rem;
+  font-weight: bold;
 }

@@ -12,10 +12,12 @@ function PostCreator() {
   
   function handleCreate() {
     if (title !== '' && url !== '') {
-      dispatch(createPost(title, url));
-      setTitle('');
-      setUrl('');
-      history.push('/');
+      dispatch(createPost(title, url))
+        .then(() => {
+          setTitle('');
+          setUrl('');
+          history.push('/');
+        });
     } else {
       setError('Please fill the empty fields.');
     }

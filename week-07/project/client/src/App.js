@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useLocalStorage } from './hooks';
-import { Login, Header, Banner, Post, Sidebar } from './components';
+import { Login, User, Header, Banner, Post, NotFound } from './components';
 import './App.css';
 
 function CheckLogin() {
@@ -24,7 +24,8 @@ function App() {
           <Route path="/login" component={Login}/>
           <Route path="/posts/create" component={Post.PostCreator}/>
           <Route path="/posts/:id" component={Post.PostDetail}/>
-          <Route render={() => <h1>404</h1>}/>
+          <Route path="/my" component={User}/>
+          <Route component={NotFound}/>
         </Switch>
       </main>
     </div>

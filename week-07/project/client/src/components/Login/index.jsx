@@ -26,7 +26,7 @@ function Login() {
   const history = useHistory();
   const [ name, setName ] = useState('');
   const [ password, setPassword ] = useState('');
-  const [ error, setError ] = useState('');
+  const [ error ] = useState('');
   const user = useSelector(state => state.user);
 
   function handleLogin() {
