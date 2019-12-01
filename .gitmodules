@@ -1,0 +1,3 @@
+[submodule "week-07/project/koa-server"]
+	path = week-07/project/koa-server
+	url = git@github.com:Kyya/reddit-server.git
