@@ -1,25 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/actionCreator';
 import './style.css';
 
-function Logout() {
-  const history = useHistory();
-  const user = useSelector(state => state.user);
-
-  function handleLogout() {
-    window.localStorage.clear();
-    history.push('/login');
-  }
-
-  return (
-    <>
-      <strong>LOGGED IN AS {user.name}</strong>
-      <button className="login-button" onClick={handleLogout}>Logout</button>
-    </>
-  )
-}
+import Logout from './logout';
 
 function Login() {
   const dispatch = useDispatch();
@@ -36,8 +21,8 @@ function Login() {
   }
 
   return (
-    <div className="login">
-      <h1>Welcome :)</h1>
+    <div className="card login">
+      <h1>Welcome to login:)</h1>
       { user
         ? <Logout/>
         : <>

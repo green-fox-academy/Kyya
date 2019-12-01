@@ -1,19 +1,11 @@
-.login {
-  width: 100%;
-  background-color: #fff;
-  border-radius: 4px;
-  padding: 1rem;
-  margin: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.login h1 {
+.login h1,
+.register h1 {
   font-size: 1.2rem;
   margin: .5rem 0;
 }
 
-.login input {
+.login input,
+.register input {
   font-size: 1rem;
   border-radius: 3px;
   outline: none;
@@ -22,12 +14,14 @@
   margin-top: .5rem;
 }
 
-.login label {
+.login label,
+.register label {
   display: flex;
   flex-direction: column;
 }
 
-.login-button {
+.login-button,
+.register-button {
   font-size: 1rem;
   margin-top: 1rem;
   color: #fff;
@@ -35,6 +29,8 @@
   border-radius: 3px;
   padding: 8px 12px;
 }
-.login-button:hover {
+
+.login-button:hover,
+.register-button:hover {
   background-color: #222;
 }

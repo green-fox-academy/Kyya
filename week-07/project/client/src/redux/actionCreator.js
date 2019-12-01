@@ -18,6 +18,9 @@ export const REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
 
+export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
+export const REGISTER_USER_FAILURE = 'REGISTER_USER_FAILURE';
+
 export const AUTHORIZATION_REQUIRED = 'AUTHORIZATION_REQUIRED';
 
 export function createPost(title, url) {
@@ -97,7 +100,10 @@ export function loginUser(username, password, history) {
     fetch(`${API_URL}/users/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({
+        username: username.trim(),
+        password: password.trim()
+      })
     })
       .then(response => {
         if (response.status === 200) {
@@ -111,5 +117,23 @@ export function loginUser(username, password, history) {
         history.push('/');
       })
       .catch(error => dispatch({ type: LOGIN_USER_FAILURE, payload: error.message }));
+  }
+}
+
+export function registerUser(username, password, email) {
+  return (dispatch) => {
+    return fetch(`${API_URL}/users/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password, email })
+    })
+      .then(response => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        throw new Error('Unexpected status code');
+      })
+      .then(response => dispatch({ type: REGISTER_USER_SUCCESS, payload: response }))
+      .catch(error => dispatch({ type: REGISTER_USER_FAILURE, payload: error.message }))
   }
 }

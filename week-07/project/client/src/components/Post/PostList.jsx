@@ -11,9 +11,14 @@ function PostList() {
     dispatch(fetchPost());
   }, [dispatch]);
 
+
   return (
     <div className="post-list">
-      {posts.map(post => <PostItem key={post.id} {...post}/>)}
+      {
+        posts.length > 0
+          ? posts.map(post => <PostItem key={post.id} {...post}/>)
+          : <div className="card">No posts here.</div>
+      }
     </div>
   )
 }

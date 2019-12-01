@@ -5,30 +5,7 @@ const conn = require('../db').promise();
 const { sha256 } = require('../helper');
 const router = Router();
 
-async function createUser(req, res) {
-  const { name, email } = req.body;
-  if (!name || !email) {
-    return res.sendStatus(400);
-  }
-  try {
-    const queryString = format(`INSERT INTO Users SET ?;
-    SELECT * FROM Users WHERE id = LAST_INSERT_ID();`, { name, email });
-    const [[{ affectedRows }, [ user ]]] = await conn.query(queryString);
-    if (affectedRows) {
-      return res.status(201).send(user);
-    }
-    res.sendStatus(422);
-  } catch (error) {
-    if (error.code === 'ER_DUP_ENTRY') {
-      return res.status(422).send({
-        message: 'user has exists'
-      });
-    }
-    next(error);
-  }
-}
-
-async function getUsers(req, res) {
+async function getUsers(req, res, next) {
   const uid = parseInt(req.params.id);
   if (Number.isNaN(uid)) {
     return res.sendStatus(400);
@@ -51,7 +28,7 @@ async function getUsers(req, res) {
   }
 }
 
-async function getVotes(req, res) {
+async function getVotes(req, res, next) {
   const uid = parseInt(req.params.id);
   try {
     const queryString = format(`SELECT * FROM Votes WHERE uid = ?;`, [uid]);
@@ -62,7 +39,7 @@ async function getVotes(req, res) {
   }
 }
 
-async function loginUser(req, res) {
+async function loginUser(req, res, next) {
   const { username, password } = req.body;
   if (!username || !password) {
     return res.sendStatus(400);
@@ -100,7 +77,7 @@ async function getUserDetails(req, res, next) {
   }
 }
 
-async function registerUser(req, res) {
+async function registerUser(req, res, next) {
   const { username, email, password } = req.body;
   if (!username || !password) {
     return res.sendStatus(400);
@@ -125,7 +102,6 @@ async function registerUser(req, res) {
   }
 }
 
-router.post('/', createUser);
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.get('/my', getUserDetails);

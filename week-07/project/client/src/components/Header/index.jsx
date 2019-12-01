@@ -24,7 +24,10 @@ function Header() {
           <Link to="/login">{user.name}</Link>
           <a href="/" onClick={handleLogout}>Logout</a>
         </>
-        : <Link to="/login">LOGIN</Link>
+        : <>
+          <Link to="/login">LOGIN</Link>
+          <Link to="/register">REGISTER</Link>
+        </>
       }
       </div>
     </header>

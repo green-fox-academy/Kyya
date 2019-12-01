@@ -3,7 +3,8 @@ import {
   FETCH_POST_SUCCESS,
   SEND_VOTE_SUCCESS,
   REMOVE_POST_SUCCESS,
-  LOGIN_USER_SUCCESS
+  LOGIN_USER_SUCCESS,
+  REGISTER_USER_SUCCESS
 } from './actionCreator';
 
 export function posts(state = [], action) {
@@ -43,6 +44,8 @@ export function user(state = getUserFromLocalStorage(), action) {
   switch (action.type) {
     case LOGIN_USER_SUCCESS:
       return action.payload.user;
+    case REGISTER_USER_SUCCESS:
+      return state;
     default:
       return state;
   }

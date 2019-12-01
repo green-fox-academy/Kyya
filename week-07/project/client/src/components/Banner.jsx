@@ -9,7 +9,6 @@ function Banner() {
         <nav>
           <NavLink activeClassName="active" exact={true} to="/">Posts</NavLink>
           <NavLink activeClassName="active" to="/my">User</NavLink>
-          <NavLink activeClassName="active" to="/404">404</NavLink>
           <NavLink activeClassName="active" to="/posts/create"><i className="fa fa-plus"/>Create</NavLink>
         </nav>
       </div>

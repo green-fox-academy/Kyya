@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useLocalStorage } from './hooks';
-import { Login, User, Header, Banner, Post, NotFound } from './components';
+import { Login, Register, User, Header, Banner, Post, NotFound } from './components';
 import './App.css';
 
 function CheckLogin() {
@@ -22,6 +22,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Post.PostList}/>
           <Route path="/login" component={Login}/>
+          <Route path="/register" component={Register}/>
           <Route path="/posts/create" component={Post.PostCreator}/>
           <Route path="/posts/:id" component={Post.PostDetail}/>
           <Route path="/my" component={User}/>
