@@ -1,3 +1,6 @@
 [submodule "week-07/project/koa-server"]
 	path = week-07/project/koa-server
 	url = git@github.com:Kyya/reddit-server.git
+[submodule "week-04/day-04/gallery"]
+	path = week-04/day-04/gallery
+	url = git@github.com:Kyya/Gallery.git
